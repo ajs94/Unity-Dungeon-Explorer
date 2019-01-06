@@ -27,6 +27,9 @@ public class CorridorManager : MonoBehaviour
     private Vector3 startPos;
     private Vector3 endPos;
 
+    private bool doorway1Made = false;
+    private bool doorway2Made = false;
+
     public void setCorridor(Corridor corridor)
     {
         currentCorridor = corridor;
@@ -266,8 +269,12 @@ public class CorridorManager : MonoBehaviour
         }
     }
 
-    public void ConnectRooms(Room room1, Room room2)
+    /* The start of the generation functions
+     * 
+     */
+    public void SetupConnection(Room room1, Room room2, bool VerticalFirst)
     {
+        // the one with the high z coordinate should be room2
         if (room1.vectorOffset.z > room2.vectorOffset.z)
         {
             Room temp = room1;
@@ -276,83 +283,107 @@ public class CorridorManager : MonoBehaviour
         }
 
         Vector3 pivot = new Vector3();
-        bool doorwayMade = false;
 
         AssignWidth(room1, room2);
 
-        // loop through the rows
+        if (VerticalFirst)
+        {
+            BuildVertically(room1, room2);
+            BuildHorizontally(room1, room2);
+        }
+        else
+        {
+            BuildHorizontally(room1, room2);
+            BuildVertically(room1, room2);
+        }
+
+        doorway1Made = false;
+        doorway2Made = false;
+}
+
+    public void BuildVertically(Room room1, Room room2)
+    {
         while (currentPos.z < endPos.z)
         {
             for (int x = 0; x < corridorWidth; x++)
             {
-                bool outsideRoom1 = (currentPos.x + x < room1.vectorOffset.x || currentPos.z < room1.vectorOffset.z) || (
-                                    currentPos.x + x > room1.vectorOffset.x + room1.col - 1 || currentPos.z > room1.vectorOffset.z + room1.rows - 1);
-                bool ousideRoom2 = (currentPos.x + x < room2.vectorOffset.x || currentPos.z < room2.vectorOffset.z) || (
-                                    currentPos.x + x > room2.vectorOffset.x + room2.col - 1 || currentPos.z > room2.vectorOffset.z + room2.rows - 1);
+                bool outsideRoom1 = (currentPos.x + x < room1.vectorOffset.x || currentPos.z < room1.vectorOffset.z) || 
+                                    (currentPos.x > room1.vectorOffset.x + room1.col - 1 || currentPos.z > room1.vectorOffset.z + room1.rows - 1);
+                bool outsideRoom2 =  (currentPos.x + x < room2.vectorOffset.x || currentPos.z < room2.vectorOffset.z) || 
+                                    (currentPos.x > room2.vectorOffset.x + room2.col - 1 || currentPos.z > room2.vectorOffset.z + room2.rows - 1);
 
-                if (outsideRoom1 && ousideRoom2)
+                if (outsideRoom1 && outsideRoom2)
                 {
-                    Collider[] intersecting = Physics.OverlapSphere(new Vector3(0, .5f, 0) + currentPos, corridorWidth/2);
-                    if (!doorwayMade && intersecting.Length == 0)
+                    Collider[] intersecting = Physics.OverlapSphere(new Vector3(0, .5f, 0) + currentPos, corridorWidth / 2);
+                    if (!doorway1Made && intersecting.Length == 0)
                     {
                         CreateVerticalDoorway(new Vector3(0, 0, 0));
-                        doorwayMade = true;
+                        doorway1Made = true;
                     }
                     currentCorridor.corridorPosition.Add(currentPos + new Vector3(x, 0, 0));
                 }
-                else
+                else if (outsideRoom1 && !outsideRoom2 && doorway1Made)
                 {
                     Collider[] intersecting = Physics.OverlapSphere(new Vector3(0, .5f, 0) + currentPos, corridorWidth / 2);
-                    if (doorwayMade && intersecting.Length == 0)
+                    if (intersecting.Length != 0)
+                    {
+                        // doorway already there; run a failed routine
+                        doorway2Made = true;
+                    }
+                    else if (!doorway2Made && intersecting.Length == 0)
                     {
                         CreateVerticalDoorway(new Vector3(0, 0, -1));
-                        doorwayMade = false;
+                        doorway2Made = true;
                     }
                 }
             }
             currentPos += Vector3.forward;
         }
+    }
 
-        pivot = currentPos;
-
-        // loop through the columns
+    public void BuildHorizontally(Room room1, Room room2)
+    {
+        // if to the right
         if (currentPos.x < endPos.x)
         {
-            //if (corridorWidth > 1)
-            //    currentPos += new Vector3(corridorWidth / 2, 0, corridorWidth / 2);
-
             while (currentPos.x <= endPos.x)
             {
                 for (int z = 0; z < corridorWidth; z++)
                 {
-                    bool outsideRoom1 = (currentPos.x < room1.vectorOffset.x || currentPos.z + z < room1.vectorOffset.z) || (
-                                        currentPos.x > room1.vectorOffset.x + room1.col - 1 || currentPos.z + z > room1.vectorOffset.z + room1.rows - 1);
-                    bool ousideRoom2 = (currentPos.x < room2.vectorOffset.x || currentPos.z + z < room2.vectorOffset.z) || (
-                                        currentPos.x > room2.vectorOffset.x + room2.col - 1 || currentPos.z + z > room2.vectorOffset.z + room2.rows - 1);
+                    bool outsideRoom1 = (currentPos.x < room1.vectorOffset.x || currentPos.z + z < room1.vectorOffset.z) || 
+                                        (currentPos.x > room1.vectorOffset.x + room1.col - 1 || currentPos.z > room1.vectorOffset.z + room1.rows - 1);
+                    bool outsideRoom2 =  (currentPos.x < room2.vectorOffset.x || currentPos.z + z < room2.vectorOffset.z) || 
+                                        (currentPos.x > room2.vectorOffset.x + room2.col - 1 || currentPos.z > room2.vectorOffset.z + room2.rows - 1);
 
-                    if (outsideRoom1 && ousideRoom2)
+                    if (outsideRoom1 && outsideRoom2)
                     {
                         Collider[] intersecting = Physics.OverlapSphere(new Vector3(0, .5f, 0) + currentPos, corridorWidth / 2);
-                        if (!doorwayMade && intersecting.Length == 0)
+                        if (!doorway1Made && intersecting.Length == 0)
                         {
                             CreateHorizDoorway(new Vector3(0, 0, 0));
-                            doorwayMade = true;
+                            doorway1Made = true;
                         }
                         currentCorridor.corridorPosition.Add(currentPos + new Vector3(0, 0, z));
                     }
-                    else
+                    else if (outsideRoom1 && !outsideRoom2 && doorway1Made)
                     {
                         Collider[] intersecting = Physics.OverlapSphere(new Vector3(0, .5f, 0) + currentPos, corridorWidth / 2);
-                        if (doorwayMade && intersecting.Length == 0)
+                        if (intersecting.Length != 0)
+                        {
+                            // doorway already there; run a failed routine
+                            doorway2Made = true;
+                        }
+                        else if (!doorway2Made && intersecting.Length == 0)
                         {
                             CreateHorizDoorway(new Vector3(-1, 0, 0));
-                            doorwayMade = false;
+                            doorway2Made = true;
                         }
                     }
                 }
                 currentPos += Vector3.right;
             }
         }
+        // if to the left
         else if (currentPos.x > endPos.x)
         {
             if (corridorWidth > 1)
@@ -362,28 +393,33 @@ public class CorridorManager : MonoBehaviour
             {
                 for (int z = 0; z < corridorWidth; z++)
                 {
-                    bool outsideRoom1 = (currentPos.x < room1.vectorOffset.x || currentPos.z + z < room1.vectorOffset.z) || (
-                                        currentPos.x > room1.vectorOffset.x + room1.col - 1 || currentPos.z + z > room1.vectorOffset.z + room1.rows - 1);
-                    bool ousideRoom2 = (currentPos.x < room2.vectorOffset.x || currentPos.z + z < room2.vectorOffset.z) || (
-                                        currentPos.x > room2.vectorOffset.x + room2.col - 1 || currentPos.z + z > room2.vectorOffset.z + room2.rows - 1);
+                    bool outsideRoom1 = (currentPos.x < room1.vectorOffset.x || currentPos.z + z < room1.vectorOffset.z) || 
+                                        (currentPos.x > room1.vectorOffset.x + room1.col - 1 || currentPos.z > room1.vectorOffset.z + room1.rows - 1);
+                    bool outsideRoom2 =  (currentPos.x < room2.vectorOffset.x || currentPos.z + z < room2.vectorOffset.z) || 
+                                        (currentPos.x > room2.vectorOffset.x + room2.col - 1 || currentPos.z > room2.vectorOffset.z + room2.rows - 1);
 
-                    if (outsideRoom1 && ousideRoom2)
+                    if (outsideRoom1 && outsideRoom2)
                     {
                         Collider[] intersecting = Physics.OverlapSphere(new Vector3(0, .5f, 0) + currentPos, corridorWidth / 2);
-                        if (!doorwayMade && intersecting.Length == 0)
+                        if (!doorway1Made && intersecting.Length == 0)
                         {
                             CreateHorizDoorway(new Vector3(0, 0, 0));
-                            doorwayMade = true;
+                            doorway1Made = true;
                         }
                         currentCorridor.corridorPosition.Add(currentPos + new Vector3(0, 0, z));
                     }
-                    else
+                    else if (outsideRoom1 && !outsideRoom2 && doorway1Made)
                     {
                         Collider[] intersecting = Physics.OverlapSphere(new Vector3(0, .5f, 0) + currentPos, corridorWidth / 2);
-                        if (doorwayMade && intersecting.Length == 0)
+                        if (intersecting.Length != 0)
+                        {
+                            // doorway already there; run a failed routine
+                            doorway2Made = true;
+                        }
+                        else if (!doorway2Made && intersecting.Length == 0)
                         {
                             CreateHorizDoorway(new Vector3(1, 0, 0));
-                            doorwayMade = false;
+                            doorway2Made = true;
                         }
                     }
                 }
@@ -391,133 +427,6 @@ public class CorridorManager : MonoBehaviour
             }
         }
     }
-
-    public void ConnectClosestRooms(Room room1, Room room2)
-    {
-        if (room1.vectorOffset.z > room2.vectorOffset.z)
-        {
-            Room temp = room1;
-            room1 = room2;
-            room2 = temp;
-        }
-
-        Vector3 pivot = new Vector3();
-        bool doorwayMade = false;
-
-        AssignWidth(room1, room2);
-
-        // loop through the columns
-        if (currentPos.x < endPos.x)
-        {
-            //if (corridorWidth > 1)
-            //    currentPos += new Vector3(corridorWidth / 2, 0, corridorWidth / 2);
-
-            while (currentPos.x <= endPos.x)
-            {
-                for (int z = 0; z < corridorWidth; z++)
-                {
-                    bool outsideRoom1 = (currentPos.x < room1.vectorOffset.x || currentPos.z + z < room1.vectorOffset.z) || (
-                                        currentPos.x > room1.vectorOffset.x + room1.col - 1 || currentPos.z + z > room1.vectorOffset.z + room1.rows - 1);
-                    bool ousideRoom2 = (currentPos.x < room2.vectorOffset.x || currentPos.z + z < room2.vectorOffset.z) || (
-                                        currentPos.x > room2.vectorOffset.x + room2.col - 1 || currentPos.z + z > room2.vectorOffset.z + room2.rows - 1);
-
-                    if (outsideRoom1 && ousideRoom2)
-                    {
-                        Collider[] intersecting = Physics.OverlapSphere(new Vector3(0, .5f, 0) + currentPos, corridorWidth / 2);
-                        if (!doorwayMade && intersecting.Length == 0)
-                        {
-                            CreateHorizDoorway(new Vector3(0, 0, 0));
-                            doorwayMade = true;
-                        }
-                        else if (!doorwayMade && intersecting.Length != 0)
-                        {
-                            doorwayMade = true;
-                        }
-                        currentCorridor.corridorPosition.Add(currentPos + new Vector3(0, 0, z));
-                    }
-                    else
-                    {
-                        Collider[] intersecting = Physics.OverlapSphere(new Vector3(0, .5f, 0) + currentPos, corridorWidth / 2);
-                        if (doorwayMade && intersecting.Length == 0)
-                        {
-                            CreateHorizDoorway(new Vector3(-1, 0, 0));
-                            doorwayMade = false;
-                        }
-                    }
-                }
-                currentPos += Vector3.right;
-            }
-        }
-        else if (currentPos.x > endPos.x)
-        {
-            if (corridorWidth > 1)
-                currentPos += new Vector3(corridorWidth - 1, 0, 0);
-
-            while (currentPos.x >= endPos.x)
-            {
-                for (int z = 0; z < corridorWidth; z++)
-                {
-                    bool outsideRoom1 = (currentPos.x < room1.vectorOffset.x || currentPos.z + z < room1.vectorOffset.z) || (
-                                        currentPos.x > room1.vectorOffset.x + room1.col - 1 || currentPos.z + z > room1.vectorOffset.z + room1.rows - 1);
-                    bool ousideRoom2 = (currentPos.x < room2.vectorOffset.x || currentPos.z + z < room2.vectorOffset.z) || (
-                                        currentPos.x > room2.vectorOffset.x + room2.col - 1 || currentPos.z + z > room2.vectorOffset.z + room2.rows - 1);
-
-                    if (outsideRoom1 && ousideRoom2)
-                    {
-                        Collider[] intersecting = Physics.OverlapSphere(new Vector3(0, .5f, 0) + currentPos, corridorWidth / 2);
-                        if (!doorwayMade && intersecting.Length == 0)
-                        {
-                            CreateHorizDoorway(new Vector3(0, 0, 0));
-                            doorwayMade = true;
-                        }
-                        else if (!doorwayMade && intersecting.Length != 0)
-                        {
-                            doorwayMade = true;
-                        }
-                        currentCorridor.corridorPosition.Add(currentPos + new Vector3(0, 0, z));
-                    }
-                    
-                }
-                currentPos += Vector3.left;
-            }
-        }
-
-        pivot = currentPos;
-
-        // loop through the rows
-        while (currentPos.z < endPos.z)
-        {
-            for (int x = 0; x < corridorWidth; x++)
-            {
-                bool outsideRoom1 = (currentPos.x + x < room1.vectorOffset.x || currentPos.z < room1.vectorOffset.z) || (
-                                    currentPos.x + x > room1.vectorOffset.x + room1.col - 1 || currentPos.z > room1.vectorOffset.z + room1.rows - 1);
-                bool ousideRoom2 = (currentPos.x + x < room2.vectorOffset.x || currentPos.z < room2.vectorOffset.z) || (
-                                    currentPos.x + x > room2.vectorOffset.x + room2.col - 1 || currentPos.z > room2.vectorOffset.z + room2.rows - 1);
-
-                if (outsideRoom1 && ousideRoom2)
-                {
-                    Collider[] intersecting = Physics.OverlapSphere(new Vector3(0, .5f, 0) + currentPos, corridorWidth / 2);
-                    if (!doorwayMade && intersecting.Length == 0)
-                    {
-                        CreateVerticalDoorway(new Vector3(0, 0, 0));
-                        doorwayMade = true;
-                    }
-                    currentCorridor.corridorPosition.Add(currentPos + new Vector3(x, 0, 0));
-                }
-                else
-                {
-                    Collider[] intersecting = Physics.OverlapSphere(new Vector3(0, .5f, 0) + currentPos, corridorWidth / 2);
-                    if (doorwayMade && intersecting.Length == 0)
-                    {
-                        CreateVerticalDoorway(new Vector3(0, 0, -1));
-                        doorwayMade = false;
-                    }
-                }
-            }
-            currentPos += Vector3.forward;
-        }
-    }
-
     public void AddCorridorFloor(Corridor corridor)
     {
         setCorridor(corridor);

@@ -12,8 +12,8 @@ public class BoardManager : MonoBehaviour
 
     // the maximum size of rooms - 1; don't go lower than 11 for this
     private int maxRoomSize = 16;
-    private int mapSizeX = 150;
-    private int mapSizeY = 75;
+    public int mapSizeX = 150;
+    public int mapSizeY = 75;
 
     public RoomManager roomScript;
     public CorridorManager corridorScript;
@@ -114,7 +114,7 @@ public class BoardManager : MonoBehaviour
             }
             corridors.Add(new Corridor());
             corridorScript.setCorridor(corridors[i]);
-            corridorScript.ConnectRooms(rooms[i], rooms[bestIndex]);
+            corridorScript.SetupConnection(rooms[i], rooms[bestIndex], true);
             corridorScript.AddCorridorFloor(corridors[i]);
         }
         
@@ -131,7 +131,7 @@ public class BoardManager : MonoBehaviour
             }
             moreCorridors.Add(new Corridor());
             corridorScript.setCorridor(moreCorridors[i]);
-            corridorScript.ConnectClosestRooms(rooms[i], rooms[bestIndex]);
+            corridorScript.SetupConnection(rooms[i], rooms[bestIndex], false);
             corridorScript.AddCorridorFloor(moreCorridors[i]);
         }
 

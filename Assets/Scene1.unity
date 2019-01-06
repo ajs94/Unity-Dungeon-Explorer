@@ -266,6 +266,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 491f31e2bcbb45f41a50d6b0a58905ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  corridors: []
+  moreCorridors: []
+  mapSizeX: 150
+  mapSizeY: 75
   roomScript: {fileID: 0}
   corridorScript: {fileID: 0}
   test: {fileID: 0}
@@ -295,7 +299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wallHeight: 1
   ceilingHeight: 2
-  torch: {fileID: 1539926317254450, guid: 8be0f9a3a3954b84eb57667289e28155, type: 2}
+  torch: {fileID: 1610051588534984, guid: 8be0f9a3a3954b84eb57667289e28155, type: 2}
   floorTiles:
   - {fileID: 1384932947961346, guid: 4e194b465392e2840a4680716e2e9dc4, type: 2}
   ceilingTiles:
@@ -320,13 +324,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8763ffc494220949b0965b5e5375f59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomScript: {fileID: 0}
+  currentCorridor: {fileID: 0}
   wallHeight: 1
   tallWallHeight: 2
   ceilingHeight: 2
   corridorWidth: 0
-  door: {fileID: 1848978362514732, guid: f15712a785d24d140bf97ee5353f3cd2, type: 2}
-  torch: {fileID: 1539926317254450, guid: 8be0f9a3a3954b84eb57667289e28155, type: 2}
+  door: {fileID: 1899733705831532, guid: 814ba9c6d0d98ae46899fd17b17534db, type: 2}
+  torch: {fileID: 1610051588534984, guid: 8be0f9a3a3954b84eb57667289e28155, type: 2}
   floorTiles:
   - {fileID: 1697811749459884, guid: 337fa37979369c4469fec029636866e5, type: 2}
   ceilingTiles:
@@ -358,7 +362,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wallHeight: 1
   ceilingHeight: 2
-  torch: {fileID: 1539926317254450, guid: 8be0f9a3a3954b84eb57667289e28155, type: 2}
+  torch: {fileID: 1610051588534984, guid: 8be0f9a3a3954b84eb57667289e28155, type: 2}
   floorTiles:
   - {fileID: 1384932947961346, guid: 4e194b465392e2840a4680716e2e9dc4, type: 2}
   ceilingTiles:
@@ -385,7 +389,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wallHeight: 1
   ceilingHeight: 2
-  torch: {fileID: 1539926317254450, guid: 8be0f9a3a3954b84eb57667289e28155, type: 2}
+  torch: {fileID: 1610051588534984, guid: 8be0f9a3a3954b84eb57667289e28155, type: 2}
   floorTiles:
   - {fileID: 1384932947961346, guid: 4e194b465392e2840a4680716e2e9dc4, type: 2}
   ceilingTiles:
