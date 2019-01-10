@@ -104,6 +104,7 @@ public class RoomManager : MonoBehaviour
         }
     }
 
+    // maybe move this to the corridor class?
     public void PlaceTorches()
     {
         GameObject instance =
