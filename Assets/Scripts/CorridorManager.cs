@@ -9,7 +9,6 @@ public class CorridorManager : MonoBehaviour
     public Corridor currentCorridor;
 
     public float wallHeight = 1;
-    public float tallWallHeight = 2;
     public float ceilingHeight = 2;
 
     public int corridorWidth;
@@ -21,7 +20,6 @@ public class CorridorManager : MonoBehaviour
     public GameObject[] floorTiles;
     public GameObject[] ceilingTiles;
     public GameObject[] wallTiles;
-    public GameObject[] tallWallTiles;
 
     private Vector3 currentPos;
     private Vector3 startPos;
@@ -35,67 +33,233 @@ public class CorridorManager : MonoBehaviour
         currentCorridor = corridor;
     }
 
-    // TODO: revamp these, they're not very good
-    public void CreateVerticalDoorway(Vector3 offset)
+    /* the creation functions for doorways
+     * inOut is true if wall is facing north
+     */ 
+    public void CreateVerticalDoorway(Vector3 offset, bool inOut)
     {
         currentCorridor.corridorWallHolder = new GameObject("CorridorWalls").transform;
             
         for (int i = 0; i < corridorWidth; i++)
         {
+            // build door and adjacent walls
             if (i == Math.Floor(corridorWidth / 2.0))
             {
                 GameObject instance =
-                    Instantiate(door, currentPos + new Vector3(i - .025f, wallHeight, 0) + offset, Quaternion.Euler(new Vector3(0, -180, 0))) as GameObject;
+                    Instantiate(door, currentPos + new Vector3(i - .025f, wallHeight, 0) + offset, 
+                    Quaternion.Euler(new Vector3(0, -180, 0))) as GameObject;
                 instance.transform.SetParent(currentCorridor.corridorWallHolder);
+
                 GameObject instance2 =
-                    Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], currentPos + new Vector3(i + .5f, wallHeight, 0) + offset, Quaternion.Euler(new Vector3(0, 90, 0))) as GameObject;
+                    Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], currentPos + new Vector3(i + .5f, wallHeight, 0) + offset, 
+                    Quaternion.Euler(new Vector3(0, 90, 0))) as GameObject;
                 instance2.transform.SetParent(currentCorridor.corridorWallHolder);
 
                 // the walls above the doorway
-                GameObject instance3 =
-                    Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], currentPos + new Vector3(i, wallHeight * 3, .5f) + offset, Quaternion.Euler(new Vector3(0, 180, 0))) as GameObject;
-                instance3.transform.SetParent(currentCorridor.corridorWallHolder);
-                GameObject instance4 =
-                    Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], currentPos + new Vector3(i, wallHeight * 3, -.5f) + offset, Quaternion.Euler(new Vector3(0, 0, 0))) as GameObject;
-                instance4.transform.SetParent(currentCorridor.corridorWallHolder);
+                if (inOut)
+                {
+                    GameObject instance3 =
+                        Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], currentPos + new Vector3(i, wallHeight * 3, .5f) + offset, 
+                        Quaternion.Euler(new Vector3(0, 180, 0))) as GameObject;
+                    instance3.transform.SetParent(currentCorridor.corridorWallHolder);
+                }
+                else
+                {
+                    GameObject instance4 =
+                        Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], currentPos + new Vector3(i, wallHeight * 3, -.5f) + offset, 
+                        Quaternion.Euler(new Vector3(0, 0, 0))) as GameObject;
+                    instance4.transform.SetParent(currentCorridor.corridorWallHolder);
+                }
             }
+            // build door and adjacent walls
             else if (i == Math.Floor(corridorWidth / 2.0) - 1)
             {
                 GameObject instance =
-                    Instantiate(door, currentPos + new Vector3(i + .025f, wallHeight, 0) + offset, Quaternion.Euler(new Vector3(0, 0, 0))) as GameObject;
+                    Instantiate(door, currentPos + new Vector3(i + .025f, wallHeight, 0) + offset, 
+                    Quaternion.Euler(new Vector3(0, 0, 0))) as GameObject;
                 instance.transform.SetParent(currentCorridor.corridorWallHolder);
+
                 GameObject instance2 =
-                    Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], currentPos + new Vector3(i - .5f, wallHeight, 0) + offset, Quaternion.Euler(new Vector3(0, -90, 0))) as GameObject;
+                    Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], currentPos + new Vector3(i - .5f, wallHeight, 0) + offset, 
+                    Quaternion.Euler(new Vector3(0, -90, 0))) as GameObject;
                 instance2.transform.SetParent(currentCorridor.corridorWallHolder);
 
                 // the walls above the doorway
-                GameObject instance3 =
-                    Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], currentPos + new Vector3(i, wallHeight * 3, .5f) + offset, Quaternion.Euler(new Vector3(0, 180, 0))) as GameObject;
-                instance3.transform.SetParent(currentCorridor.corridorWallHolder);
-                GameObject instance4 =
-                    Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], currentPos + new Vector3(i, wallHeight * 3, -.5f) + offset, Quaternion.Euler(new Vector3(0, 0, 0))) as GameObject;
-                instance4.transform.SetParent(currentCorridor.corridorWallHolder);
+                if (inOut)
+                {
+                    GameObject instance3 =
+                        Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], currentPos + new Vector3(i, wallHeight * 3, .5f) + offset, 
+                        Quaternion.Euler(new Vector3(0, 180, 0))) as GameObject;
+                    instance3.transform.SetParent(currentCorridor.corridorWallHolder);
+                }
+                else
+                {
+                    GameObject instance4 =
+                        Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], currentPos + new Vector3(i, wallHeight * 3, -.5f) + offset, 
+                        Quaternion.Euler(new Vector3(0, 0, 0))) as GameObject;
+                    instance4.transform.SetParent(currentCorridor.corridorWallHolder);
+                }
             }
+            // build walls facing into corridor
             else
             {
-                GameObject instance =
-                    Instantiate(tallWallTiles[Random.Range(0, tallWallTiles.Length)], currentPos + new Vector3(i, tallWallHeight, .5f) + offset, Quaternion.Euler(new Vector3(0, 180, 0))) as GameObject;
-                instance.transform.SetParent(currentCorridor.corridorWallHolder);
-                GameObject instance2 =
-                    Instantiate(tallWallTiles[Random.Range(0, tallWallTiles.Length)], currentPos + new Vector3(i, tallWallHeight, -.5f) + offset, Quaternion.Euler(new Vector3(0, 0, 0))) as GameObject;
-                instance2.transform.SetParent(currentCorridor.corridorWallHolder);
+                if (inOut)
+                {
+                    GameObject instance =
+                        Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], currentPos + new Vector3(i, wallHeight, .5f) + offset, 
+                        Quaternion.Euler(new Vector3(0, 180, 0))) as GameObject;
+                    instance.transform.SetParent(currentCorridor.corridorWallHolder);
+                }
+                else
+                {
+                    GameObject instance2 =
+                        Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], currentPos + new Vector3(i, wallHeight, -.5f) + offset, 
+                        Quaternion.Euler(new Vector3(0, 0, 0))) as GameObject;
+                    instance2.transform.SetParent(currentCorridor.corridorWallHolder);
+                }
             }
         }
     }
 
-    public void CreateHorizDoorway(Vector3 offset)
+    public void CreateHorizDoorway(Vector3 offset, bool inOut)
     {
+        currentCorridor.corridorWallHolder = new GameObject("CorridorWalls").transform;
+
+        for (int i = 0; i < corridorWidth; i++)
+        {
+            // build door and adjacent walls
+            if (i == (corridorWidth / 2))
+            {
+                GameObject instance =
+                    Instantiate(door, currentPos + new Vector3(0, wallHeight, i - .025f) + offset, Quaternion.Euler(new Vector3(0, 90, 0))) as GameObject;
+                instance.transform.SetParent(currentCorridor.corridorWallHolder);
+
+                GameObject instance2 =
+                    Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], currentPos + new Vector3(0, wallHeight, i + .5f) + offset, 
+                    Quaternion.Euler(new Vector3(0, 0, 0))) as GameObject;
+                instance2.transform.SetParent(currentCorridor.corridorWallHolder);
+
+                // the walls above the doorway
+                if (inOut)
+                {
+                    GameObject instance3 =
+                        Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], currentPos + new Vector3(.5f, wallHeight * 3, i) + offset, 
+                        Quaternion.Euler(new Vector3(0, -90, 0))) as GameObject;
+                    instance3.transform.SetParent(currentCorridor.corridorWallHolder);
+                }
+                else
+                {
+                    GameObject instance4 =
+                        Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], currentPos + new Vector3(-.5f, wallHeight * 3, i) + offset, 
+                        Quaternion.Euler(new Vector3(0, 90, 0))) as GameObject;
+                    instance4.transform.SetParent(currentCorridor.corridorWallHolder);
+                }
+            }
+            // build door and adjacent walls
+            else if (i == (corridorWidth / 2) - 1)
+            {
+                GameObject instance =
+                    Instantiate(door, currentPos + new Vector3(0, wallHeight, i + .025f) + offset, Quaternion.Euler(new Vector3(0, -90, 0))) as GameObject;
+                instance.transform.SetParent(currentCorridor.corridorWallHolder);
+
+                GameObject instance2 =
+                    Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], currentPos + new Vector3(0, wallHeight, i - .5f) + offset, 
+                    Quaternion.Euler(new Vector3(0, 180, 0))) as GameObject;
+                instance2.transform.SetParent(currentCorridor.corridorWallHolder);
+
+                // the walls above the doorway
+                if (inOut)
+                {
+                    GameObject instance3 =
+                        Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], currentPos + new Vector3(.5f, wallHeight * 3, i) + offset, 
+                        Quaternion.Euler(new Vector3(0, -90, 0))) as GameObject;
+                    instance3.transform.SetParent(currentCorridor.corridorWallHolder);
+                }
+                else
+                {
+                    GameObject instance4 =
+                        Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], currentPos + new Vector3(-.5f, wallHeight * 3, i) + offset, 
+                        Quaternion.Euler(new Vector3(0, 90, 0))) as GameObject;
+                    instance4.transform.SetParent(currentCorridor.corridorWallHolder);
+                }
+            }
+            // build walls facing into corridor
+            else
+            {
+                if (inOut)
+                {
+                    GameObject instance =
+                        Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], currentPos + new Vector3(.5f, wallHeight, i) + offset, 
+                        Quaternion.Euler(new Vector3(0, -90, 0))) as GameObject;
+                    instance.transform.SetParent(currentCorridor.corridorWallHolder);
+                }
+                else
+                {
+                    GameObject instance2 =
+                        Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], currentPos + new Vector3(-.5f, wallHeight, i) + offset, 
+                        Quaternion.Euler(new Vector3(0, 90, 0))) as GameObject;
+                    instance2.transform.SetParent(currentCorridor.corridorWallHolder);
+                }
+            }
+            }
     }
 
     // to fill the space for when a doorway hits a collision
-    public void CreateDoorwayToWall(Vector3 offset)
+    public void VertDoorwayToWall(Vector3 offset, bool inOut)
     {
-
+        for (int i = 0; i < corridorWidth; i++)
+        {
+            if (inOut)
+            {
+                Collider[] intersecting = Physics.OverlapSphere(new Vector3(i, wallHeight / 2, .25f) + currentPos + offset, .4f);
+                if (intersecting.Length == 0)
+                {
+                    GameObject instance =
+                        Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], currentPos + new Vector3(i, wallHeight, .5f) + offset,
+                        Quaternion.Euler(new Vector3(0, 180, 0))) as GameObject;
+                    instance.transform.SetParent(currentCorridor.corridorWallHolder);
+                }
+            }
+            else
+            {
+                Collider[] intersecting = Physics.OverlapSphere(new Vector3(i, wallHeight / 2, -.25f) + currentPos + offset, .4f);
+                if (intersecting.Length == 0)
+                {
+                    GameObject instance2 =
+                        Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], currentPos + new Vector3(i, wallHeight, -.5f) + offset,
+                        Quaternion.Euler(new Vector3(0, 0, 0))) as GameObject;
+                    instance2.transform.SetParent(currentCorridor.corridorWallHolder);
+                }
+            }
+        }
+    }
+    public void HorzDoorwayToWall(Vector3 offset, bool inOut)
+    {
+        for (int i = 0; i < corridorWidth; i++)
+        {
+            if (inOut)
+            {
+                Collider[] intersecting = Physics.OverlapSphere(new Vector3(.25f, wallHeight / 2, i) + currentPos + offset, .4f);
+                if (intersecting.Length == 0)
+                {
+                    GameObject instance =
+                        Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], currentPos + new Vector3(.5f, wallHeight, i) + offset,
+                        Quaternion.Euler(new Vector3(0, -90, 0))) as GameObject;
+                    instance.transform.SetParent(currentCorridor.corridorWallHolder);
+                }
+            }
+            else
+            {
+                Collider[] intersecting = Physics.OverlapSphere(new Vector3(-.25f, wallHeight / 2, i) + currentPos + offset, .4f);
+                if (intersecting.Length == 0)
+                {
+                    GameObject instance2 =
+                        Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], currentPos + new Vector3(-.5f, wallHeight, i) + offset,
+                        Quaternion.Euler(new Vector3(0, 90, 0))) as GameObject;
+                    instance2.transform.SetParent(currentCorridor.corridorWallHolder);
+                }
+            }
+        }
     }
 
     // TODO: if outside length/width make sure corridor is small enough
@@ -210,9 +374,15 @@ public class CorridorManager : MonoBehaviour
                 if (outsideRoom1 && outsideRoom2)
                 {
                     Collider[] intersecting = Physics.OverlapSphere(new Vector3(0, .5f, 0) + currentPos, corridorWidth / 2);
-                    if (!doorway1Made && intersecting.Length == 0)
+                    if (!doorway1Made && intersecting.Length != 0)
                     {
-                        CreateVerticalDoorway(new Vector3(0, 0, 0));
+                        // doorway already there; run a failed routine
+                        VertDoorwayToWall(new Vector3(0, 0, 0), true);
+                        doorway1Made = true;
+                    }
+                    else if (!doorway1Made && intersecting.Length == 0)
+                    {
+                        CreateVerticalDoorway(new Vector3(0, 0, 0), true);
                         doorway1Made = true;
                     }
                     currentCorridor.corridorPosition.Add(currentPos + new Vector3(x, 0, 0));
@@ -220,14 +390,15 @@ public class CorridorManager : MonoBehaviour
                 else if (outsideRoom1 && !outsideRoom2 && doorway1Made)
                 {
                     Collider[] intersecting = Physics.OverlapSphere(new Vector3(0, .5f, 0) + currentPos, corridorWidth / 2);
-                    if (intersecting.Length != 0)
+                    if (!doorway2Made && intersecting.Length != 0)
                     {
                         // doorway already there; run a failed routine
+                        VertDoorwayToWall(new Vector3(0, 0, -1), false);
                         doorway2Made = true;
                     }
                     else if (!doorway2Made && intersecting.Length == 0)
                     {
-                        CreateVerticalDoorway(new Vector3(0, 0, -1));
+                        CreateVerticalDoorway(new Vector3(0, 0, -1), false  );
                         doorway2Made = true;
                     }
                 }
@@ -253,9 +424,15 @@ public class CorridorManager : MonoBehaviour
                     if (outsideRoom1 && outsideRoom2)
                     {
                         Collider[] intersecting = Physics.OverlapSphere(new Vector3(0, .5f, 0) + currentPos, corridorWidth / 2);
-                        if (!doorway1Made && intersecting.Length == 0)
+                        if (!doorway1Made && intersecting.Length != 0)
                         {
-                            CreateHorizDoorway(new Vector3(0, 0, 0));
+                            // doorway already there; run a failed routine
+                            HorzDoorwayToWall(new Vector3(0, 0, 0), true);
+                            doorway1Made = true;
+                        }
+                        else if (!doorway1Made && intersecting.Length == 0)
+                        {
+                            CreateHorizDoorway(new Vector3(0, 0, 0), true);
                             doorway1Made = true;
                         }
                         currentCorridor.corridorPosition.Add(currentPos + new Vector3(0, 0, z));
@@ -263,14 +440,15 @@ public class CorridorManager : MonoBehaviour
                     else if (outsideRoom1 && !outsideRoom2 && doorway1Made)
                     {
                         Collider[] intersecting = Physics.OverlapSphere(new Vector3(0, .5f, 0) + currentPos, corridorWidth / 2);
-                        if (intersecting.Length != 0)
+                        if (!doorway2Made && intersecting.Length != 0)
                         {
                             // doorway already there; run a failed routine
+                            HorzDoorwayToWall(new Vector3(-1, 0, 0), false);
                             doorway2Made = true;
                         }
                         else if (!doorway2Made && intersecting.Length == 0)
                         {
-                            CreateHorizDoorway(new Vector3(-1, 0, 0));
+                            CreateHorizDoorway(new Vector3(-1, 0, 0), false);
                             doorway2Made = true;
                         }
                     }
@@ -296,9 +474,15 @@ public class CorridorManager : MonoBehaviour
                     if (outsideRoom1 && outsideRoom2)
                     {
                         Collider[] intersecting = Physics.OverlapSphere(new Vector3(0, .5f, 0) + currentPos, corridorWidth / 2);
-                        if (!doorway1Made && intersecting.Length == 0)
+                        if (!doorway1Made && intersecting.Length != 0)
                         {
-                            CreateHorizDoorway(new Vector3(0, 0, 0));
+                            // doorway already there; run a failed routine
+                            HorzDoorwayToWall(new Vector3(0, 0, 0), false);
+                            doorway1Made = true;
+                        }
+                        else if(!doorway1Made && intersecting.Length == 0)
+                        {
+                            CreateHorizDoorway(new Vector3(0, 0, 0), false);
                             doorway1Made = true;
                         }
                         currentCorridor.corridorPosition.Add(currentPos + new Vector3(0, 0, z));
@@ -306,14 +490,15 @@ public class CorridorManager : MonoBehaviour
                     else if (outsideRoom1 && !outsideRoom2 && doorway1Made)
                     {
                         Collider[] intersecting = Physics.OverlapSphere(new Vector3(0, .5f, 0) + currentPos, corridorWidth / 2);
-                        if (intersecting.Length != 0)
+                        if (!doorway2Made && intersecting.Length != 0)
                         {
                             // doorway already there; run a failed routine
+                            CreateHorizDoorway(new Vector3(1, 0, 0), true);
                             doorway2Made = true;
                         }
                         else if (!doorway2Made && intersecting.Length == 0)
                         {
-                            CreateHorizDoorway(new Vector3(1, 0, 0));
+                            CreateHorizDoorway(new Vector3(1, 0, 0), true);
                             doorway2Made = true;
                         }
                     }
@@ -332,9 +517,12 @@ public class CorridorManager : MonoBehaviour
             Collider[] intersecting = Physics.OverlapSphere(tile, .1f);
             if (intersecting.Length == 0)
             {
-                GameObject instance = Instantiate(floorTiles[Random.Range(0, floorTiles.Length)], tile, Quaternion.identity) as GameObject;
+                GameObject instance = Instantiate(floorTiles[Random.Range(0, floorTiles.Length)], tile, 
+                    Quaternion.identity) as GameObject;
                 instance.transform.SetParent(currentCorridor.corridorHolder);
-                GameObject instance2 = Instantiate(ceilingTiles[Random.Range(0, ceilingTiles.Length)], tile + new Vector3(0, ceilingHeight, 0), Quaternion.Euler(new Vector3(-90, 0, 0))) as GameObject;
+
+                GameObject instance2 = Instantiate(ceilingTiles[Random.Range(0, ceilingTiles.Length)], tile + new Vector3(0, ceilingHeight, 0), 
+                    Quaternion.Euler(new Vector3(-90, 0, 0))) as GameObject;
                 instance2.transform.SetParent(currentCorridor.corridorHolder);
             }
         }
@@ -354,7 +542,8 @@ public class CorridorManager : MonoBehaviour
                 if (intersectingWall.Length == 0)
                 {
                     GameObject instance =
-                        Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], tile + new Vector3(0, wallHeight, .5f), Quaternion.identity) as GameObject;
+                        Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], tile + new Vector3(0, wallHeight, .5f), 
+                        Quaternion.identity) as GameObject;
                     instance.transform.SetParent(currentCorridor.corridorWallHolder);
                 }
             }
@@ -365,7 +554,8 @@ public class CorridorManager : MonoBehaviour
                 if (intersectingWall.Length == 0)
                 {
                     GameObject instance =
-                        Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], tile + new Vector3(0, wallHeight, -.5f), Quaternion.Euler(new Vector3(0, 180, 0))) as GameObject;
+                        Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], tile + new Vector3(0, wallHeight, -.5f), 
+                        Quaternion.Euler(new Vector3(0, 180, 0))) as GameObject;
                     instance.transform.SetParent(currentCorridor.corridorWallHolder);
                 }
             }
@@ -376,7 +566,8 @@ public class CorridorManager : MonoBehaviour
                 if (intersectingWall.Length == 0)
                 {
                     GameObject instance =
-                        Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], tile + new Vector3(.5f, wallHeight, 0), Quaternion.Euler(new Vector3(0, 90, 0))) as GameObject;
+                        Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], tile + new Vector3(.5f, wallHeight, 0), 
+                        Quaternion.Euler(new Vector3(0, 90, 0))) as GameObject;
                     instance.transform.SetParent(currentCorridor.corridorWallHolder);
                 }
             }
@@ -387,7 +578,8 @@ public class CorridorManager : MonoBehaviour
                 if (intersectingWall.Length == 0)
                 {
                     GameObject instance =
-                        Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], tile + new Vector3(-.5f, wallHeight, 0), Quaternion.Euler(new Vector3(0, -90, 0))) as GameObject;
+                        Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], tile + new Vector3(-.5f, wallHeight, 0), 
+                        Quaternion.Euler(new Vector3(0, -90, 0))) as GameObject;
                     instance.transform.SetParent(currentCorridor.corridorWallHolder);
                 }
             }

@@ -336,12 +336,7 @@ MonoBehaviour:
   ceilingTiles:
   - {fileID: 1209226881408922, guid: 5db40028c210155439404a308005f4b0, type: 2}
   wallTiles:
-  - {fileID: 1902051691915054, guid: 6c5201a80324ba840bee3bc1d22e151a, type: 2}
-  - {fileID: 1278850407652588, guid: edd34f8eed0ba414d9c96f8b67aff23b, type: 2}
-  - {fileID: 1392329593670234, guid: 74a144f237341f143ae26b3ca1442881, type: 2}
-  - {fileID: 1489769497914218, guid: 0d5a0a10e40430047b994d6a825b7186, type: 2}
-  - {fileID: 1249902547453190, guid: b09fc29bdf1bb8541842d9353b10092e, type: 2}
-  - {fileID: 1680380735966158, guid: cafbc457f7a77b04ca97da488425fb87, type: 2}
+  - {fileID: 1651352015128942, guid: dc37bd44e2a46a84094fef4816090e6c, type: 2}
   tallWallTiles:
   - {fileID: 1922748569263642, guid: f6885e709ad6eaa48a0dfbbf6c945c05, type: 2}
   - {fileID: 1310946502084018, guid: 788896708a0a93c428af823cfbb797eb, type: 2}
@@ -416,7 +411,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4234374243256294, guid: 02084691df02e9842b720fd082437454, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4234374243256294, guid: 02084691df02e9842b720fd082437454, type: 2}
       propertyPath: m_LocalPosition.y
@@ -424,7 +419,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4234374243256294, guid: 02084691df02e9842b720fd082437454, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4234374243256294, guid: 02084691df02e9842b720fd082437454, type: 2}
       propertyPath: m_LocalRotation.x

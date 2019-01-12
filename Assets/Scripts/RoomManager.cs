@@ -69,36 +69,79 @@ public class RoomManager : MonoBehaviour
     {
         for (float x = 0; x < room.col; x++)
         {
-            Collider[] intersecting = Physics.OverlapSphere(new Vector3(x, 0f, room.rows) + room.vectorOffset, .1f);
+            // north
+            Collider[] intersecting = Physics.OverlapSphere(new Vector3(x, 1f, room.rows - .1f) + room.vectorOffset, .4f);
             if (intersecting.Length == 0)
             {
-
-                    GameObject instance =
-                       Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], new Vector3(x, wallHeight, room.rows - .5f) + room.vectorOffset, Quaternion.identity) as GameObject;
-                    instance.transform.SetParent(roomHolder);
+                GameObject instance =
+                    Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], 
+                    new Vector3(x, wallHeight, room.rows - .5f) + room.vectorOffset, 
+                    Quaternion.identity) as GameObject;
+                instance.transform.SetParent(roomHolder);
             }
-            intersecting = Physics.OverlapSphere(new Vector3(x, 0f, -1) + room.vectorOffset, .1f);
+            else
+            {
+                GameObject instance4 =
+                    Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], 
+                    new Vector3(x, wallHeight + 2, room.rows -.5f) + room.vectorOffset, 
+                    Quaternion.identity) as GameObject;
+                instance4.transform.SetParent(roomHolder);
+            }
+            // south
+            intersecting = Physics.OverlapSphere(new Vector3(x, 1f, -.9f) + room.vectorOffset, .4f);
             if (intersecting.Length == 0)
             {
-                    GameObject instance =
-                        Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], new Vector3(x, wallHeight, -.5f) + room.vectorOffset, Quaternion.Euler(new Vector3(0, 180, 0))) as GameObject;
-                    instance.transform.SetParent(roomHolder);
+                GameObject instance =
+                    Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], 
+                    new Vector3(x, wallHeight, -.5f) + room.vectorOffset, 
+                    Quaternion.Euler(new Vector3(0, 180, 0))) as GameObject;
+                instance.transform.SetParent(roomHolder);
+            }
+            else
+            {
+                GameObject instance4 =
+                    Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], 
+                    new Vector3(x, wallHeight + 2, -.5f) + room.vectorOffset, 
+                    Quaternion.Euler(new Vector3(0, 180, 0))) as GameObject;
+                instance4.transform.SetParent(roomHolder);
             }
         }
         for (float z = 0; z < room.rows; z++)
         {
-            Collider[] intersecting = Physics.OverlapSphere(new Vector3(room.col, 0f, z) + room.vectorOffset, .1f);
+            // east
+            Collider[] intersecting = Physics.OverlapSphere(new Vector3(room.col - .1f, 1f, z) + room.vectorOffset, .4f);
             if (intersecting.Length == 0)
             {
                 GameObject instance =
-                    Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], new Vector3(room.col - .5f, wallHeight, z) + room.vectorOffset, Quaternion.Euler(new Vector3(0, 90, 0))) as GameObject;
+                    Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], 
+                    new Vector3(room.col - .5f, wallHeight, z) + room.vectorOffset, 
+                    Quaternion.Euler(new Vector3(0, 90, 0))) as GameObject;
                 instance.transform.SetParent(roomHolder);
             }
-            intersecting = Physics.OverlapSphere(new Vector3(-1, 0f, z) + room.vectorOffset, .1f);
+            else
+            {
+                GameObject instance4 =
+                    Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], 
+                    new Vector3(room.col - .5f, wallHeight + 2, z) + room.vectorOffset, 
+                    Quaternion.Euler(new Vector3(0, 90, 0))) as GameObject;
+                instance4.transform.SetParent(roomHolder);
+            }
+            // west
+            intersecting = Physics.OverlapSphere(new Vector3(-.9f, 1f, z) + room.vectorOffset, .4f);
             if (intersecting.Length == 0)
             {
                 GameObject instance =
-                    Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], new Vector3(-.5f, wallHeight, z) + room.vectorOffset, Quaternion.Euler(new Vector3(0, -90, 0))) as GameObject;
+                    Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], 
+                    new Vector3(-.5f, wallHeight, z) + room.vectorOffset, 
+                    Quaternion.Euler(new Vector3(0, -90, 0))) as GameObject;
+                instance.transform.SetParent(roomHolder);
+            }
+            else
+            {
+                GameObject instance =
+                    Instantiate(wallTiles[Random.Range(0, wallTiles.Length)], 
+                    new Vector3(  -.5f, wallHeight + 2, z) + room.vectorOffset, 
+                    Quaternion.Euler(new Vector3(0, -90, 0))) as GameObject;
                 instance.transform.SetParent(roomHolder);
             }
         }
