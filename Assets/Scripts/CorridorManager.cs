@@ -493,7 +493,7 @@ public class CorridorManager : MonoBehaviour
                         if (!doorway2Made && intersecting.Length != 0)
                         {
                             // doorway already there; run a failed routine
-                            CreateHorizDoorway(new Vector3(1, 0, 0), true);
+                            HorzDoorwayToWall(new Vector3(1, 0, 0), true);
                             doorway2Made = true;
                         }
                         else if (!doorway2Made && intersecting.Length == 0)
