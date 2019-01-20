@@ -232,9 +232,12 @@ GameObject:
   - component: {fileID: 1354791048}
   - component: {fileID: 1354791047}
   - component: {fileID: 1354791049}
-  - component: {fileID: 1354791050}
+  - component: {fileID: 1354791055}
   - component: {fileID: 1354791051}
   - component: {fileID: 1354791052}
+  - component: {fileID: 1354791050}
+  - component: {fileID: 1354791054}
+  - component: {fileID: 1354791053}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -270,10 +273,8 @@ MonoBehaviour:
   moreCorridors: []
   mapSizeX: 150
   mapSizeY: 75
-  roomScript: {fileID: 0}
-  corridorScript: {fileID: 0}
-  test: {fileID: 0}
-  diningRoom: {fileID: 0}
+  roomFactory: {fileID: 0}
+  corridorFactory: {fileID: 0}
 --- !u!114 &1354791048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,7 +327,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCorridor: {fileID: 0}
   wallHeight: 1
-  tallWallHeight: 2
   ceilingHeight: 2
   corridorWidth: 0
   door: {fileID: 1899733705831532, guid: 814ba9c6d0d98ae46899fd17b17534db, type: 2}
@@ -337,13 +337,6 @@ MonoBehaviour:
   - {fileID: 1209226881408922, guid: 5db40028c210155439404a308005f4b0, type: 2}
   wallTiles:
   - {fileID: 1651352015128942, guid: dc37bd44e2a46a84094fef4816090e6c, type: 2}
-  tallWallTiles:
-  - {fileID: 1922748569263642, guid: f6885e709ad6eaa48a0dfbbf6c945c05, type: 2}
-  - {fileID: 1310946502084018, guid: 788896708a0a93c428af823cfbb797eb, type: 2}
-  - {fileID: 1511183138748838, guid: 4b0e478ec6e38d34883dbcc03f8f31c7, type: 2}
-  - {fileID: 1048149262871002, guid: a70814ddafb86264fbaefe276c0338d2, type: 2}
-  - {fileID: 1870042893306264, guid: a696ae7a3125dd54ab586532edc21ffa, type: 2}
-  - {fileID: 1106654115508468, guid: 19c0e05ab3572854e84cb3173fd8b840, type: 2}
 --- !u!114 &1354791051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,6 +395,60 @@ MonoBehaviour:
   - {fileID: 1887022773653548, guid: be84eafac363cd24da5cb0ccfdef525c, type: 2}
   chairList:
   - {fileID: 1203111467471282, guid: e52744c26018498438672806be86e468, type: 2}
+--- !u!114 &1354791053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1354791045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ca017c21e852ac4cb5d964c08321c38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentCorridor: {fileID: 0}
+  wallHeight: 1
+  ceilingHeight: 2
+  corridorWidth: 0
+  door: {fileID: 1899733705831532, guid: 814ba9c6d0d98ae46899fd17b17534db, type: 2}
+  torch: {fileID: 1610051588534984, guid: 8be0f9a3a3954b84eb57667289e28155, type: 2}
+  floorTiles:
+  - {fileID: 1697811749459884, guid: 337fa37979369c4469fec029636866e5, type: 2}
+  ceilingTiles:
+  - {fileID: 1209226881408922, guid: 5db40028c210155439404a308005f4b0, type: 2}
+  wallTiles:
+  - {fileID: 1922748569263642, guid: f6885e709ad6eaa48a0dfbbf6c945c05, type: 2}
+  - {fileID: 1310946502084018, guid: 788896708a0a93c428af823cfbb797eb, type: 2}
+  - {fileID: 1511183138748838, guid: 4b0e478ec6e38d34883dbcc03f8f31c7, type: 2}
+  - {fileID: 1048149262871002, guid: a70814ddafb86264fbaefe276c0338d2, type: 2}
+  - {fileID: 1870042893306264, guid: a696ae7a3125dd54ab586532edc21ffa, type: 2}
+  - {fileID: 1106654115508468, guid: 19c0e05ab3572854e84cb3173fd8b840, type: 2}
+--- !u!114 &1354791054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1354791045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0916a69e6e1dec24babd787429953c68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultCorrdior: {fileID: 0}
+--- !u!114 &1354791055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1354791045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d05f2e9417f1c3a4691ad0ed36a0db10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultRoom: {fileID: 0}
+  test: {fileID: 0}
+  diningRoom: {fileID: 0}
 --- !u!1001 &1387761006
 Prefab:
   m_ObjectHideFlags: 0

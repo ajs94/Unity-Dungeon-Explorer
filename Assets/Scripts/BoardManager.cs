@@ -15,34 +15,9 @@ public class BoardManager : MonoBehaviour
     public int mapSizeX = 150;
     public int mapSizeY = 75;
 
-    public RoomManager roomScript;
-    public CorridorManager corridorScript;
-    public TestTall test;
-    public DiningArea diningRoom;
+    public RoomFactory roomFactory;
+    public CorridorFactory corridorFactory;
 
-    // factory for the different room scripts
-    public void InitializeScripts()
-    {
-        roomScript = GetComponent<RoomManager>();
-        corridorScript = GetComponent<CorridorManager>();
-        test = GetComponent<TestTall>();
-        diningRoom = GetComponent<DiningArea>();
-    }
-
-    public void ChooseRoomType(int index)
-    {
-        int choice = Random.Range(0, 10);
-
-        if (choice > 1)
-        {
-            diningRoom.SetupScene(rooms[index]);
-        }
-        else if (choice <= 1)
-        {
-            roomScript.SetupScene(rooms[index]);
-        }
-    }
-    
     // check if two rooms overlap the same area
     public bool RoomsOverlapping(Room room1, Room room2)
     {
@@ -69,7 +44,10 @@ public class BoardManager : MonoBehaviour
 
     public void SetupBoard(int level)
     {
-        InitializeScripts();
+        corridorFactory = GetComponent<CorridorFactory>();
+        corridorFactory.InitializeScripts();
+        roomFactory = GetComponent<RoomFactory>();
+        roomFactory.InitializeScripts();
 
         Vector3 startPos = new Vector3(1, 0f, 1);
 
@@ -107,48 +85,46 @@ public class BoardManager : MonoBehaviour
             int bestIndex = i + 1;
             for (int n = i + 1; n < rooms.Length; n++)
             {
-                if (Vector3.Distance(rooms[i].vectorOffset, rooms[n].vectorOffset) < Vector3.Distance(rooms[i].vectorOffset, rooms[bestIndex].vectorOffset))
+                if (Vector3.Distance(rooms[i].vectorOffset, rooms[n].vectorOffset) <
+                    Vector3.Distance(rooms[i].vectorOffset, rooms[bestIndex].vectorOffset))
                 {
                     bestIndex = n;
                 }
             }
             corridors.Add(new Corridor());
-            corridorScript.setCorridor(corridors[i]);
-            corridorScript.SetupConnection(rooms[i], rooms[bestIndex], true);
-            corridorScript.AddCorridorFloor(corridors[i]);
+            corridorFactory.ChooseCorridorType(i, bestIndex, corridors[i], rooms, true);
         }
-        
+
         // connect each room with the one nearest it
         for (int i = 0; i < rooms.Length - 1; i++)
         {
             int bestIndex = i + 1;
             for (int n = 0; n < rooms.Length - 1; n++)
             {
-                if (n != i && Vector3.Distance(rooms[i].vectorOffset, rooms[n].vectorOffset) < Vector3.Distance(rooms[i].vectorOffset, rooms[bestIndex].vectorOffset))
+                if (n != i && Vector3.Distance(rooms[i].vectorOffset, rooms[n].vectorOffset) <
+                                Vector3.Distance(rooms[i].vectorOffset, rooms[bestIndex].vectorOffset))
                 {
                     bestIndex = n;
                 }
             }
             moreCorridors.Add(new Corridor());
-            corridorScript.setCorridor(moreCorridors[i]);
-            corridorScript.SetupConnection(rooms[i], rooms[bestIndex], false);
-            corridorScript.AddCorridorFloor(moreCorridors[i]);
+            corridorFactory.ChooseCorridorType(i, bestIndex, moreCorridors[i], rooms, false);
         }
 
         for (int i = 0; i < rooms.Length; i++)
         {
             // print(rooms[i].vectorOffset);
-            ChooseRoomType(i);
+            roomFactory.ChooseRoomType(i, rooms);
         }
 
         for (int i = 0; i < corridors.Count; i++)
         {
-            corridorScript.AddCorridorWalls(corridors[i]);
+            corridorFactory.MakeCorridorWalls(corridors[i]);
         }
 
         for (int i = 0; i < moreCorridors.Count; i++)
         {
-            corridorScript.AddCorridorWalls(moreCorridors[i]);
+            corridorFactory.MakeCorridorWalls(moreCorridors[i]);
         }
     }
 }

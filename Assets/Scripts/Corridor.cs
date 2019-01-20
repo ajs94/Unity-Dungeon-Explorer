@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Corridor : MonoBehaviour {
+public class Corridor : MonoBehaviour
+{
 
     public int corridorWidth;
 
@@ -10,7 +11,9 @@ public class Corridor : MonoBehaviour {
     public Transform corridorHolder;
     public Transform corridorWallHolder;
 
-    private int corridorWidthMax = 4;    // exclusive
+    public CorridorType corridorType;
+
+    private int corridorWidthMax = 4;
 
     private Vector3 currentPos;
     private Vector3 endPos;
@@ -18,5 +21,10 @@ public class Corridor : MonoBehaviour {
     public void SetupCorridor()
     {
         corridorWidth = Random.Range(2, corridorWidthMax);
+    }
+
+    public void setType(CorridorType newType)
+    {
+        corridorType = newType;
     }
 }
