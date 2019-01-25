@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 65730165445124218}
   - component: {fileID: 23974236191713336}
   m_Layer: 0
-  m_Name: torch
+  m_Name: Torch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

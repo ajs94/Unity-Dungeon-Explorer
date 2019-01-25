@@ -17,10 +17,10 @@ public class DiningArea : RoomManager
                        Instantiate(chairList[Random.Range(0, chairList.Length)], new Vector3( (room.col/2) - 2, 0, i) + room.vectorOffset, Quaternion.Euler(new Vector3(-90, 270, 0))) as GameObject;
                 chair1.transform.SetParent(roomHolder);
                 GameObject table1 =
-                       Instantiate(tableList[Random.Range(0, tableList.Length)], new Vector3((room.col / 2) - 1, 0, i) + room.vectorOffset, Quaternion.Euler(new Vector3(-90, 270, 0))) as GameObject;
+                       Instantiate(tableList[Random.Range(0, tableList.Length)], new Vector3((room.col / 2) - 1, .5f, i) + room.vectorOffset, Quaternion.Euler(new Vector3(-90, 270, 0))) as GameObject;
                 table1.transform.SetParent(roomHolder);
                 GameObject table2 =
-                       Instantiate(tableList[Random.Range(0, tableList.Length)], new Vector3(  (room.col / 2)  , 0, i) + room.vectorOffset, Quaternion.Euler(new Vector3(-90, 270, 0))) as GameObject;
+                       Instantiate(tableList[Random.Range(0, tableList.Length)], new Vector3(  (room.col / 2)  , .5f, i) + room.vectorOffset, Quaternion.Euler(new Vector3(-90, 270, 0))) as GameObject;
                 table2.transform.SetParent(roomHolder);
                 GameObject chair2 =
                        Instantiate(chairList[Random.Range(0, chairList.Length)], new Vector3((room.col / 2) + 1, 0, i) + room.vectorOffset, Quaternion.Euler(new Vector3(-90, 90, 0))) as GameObject;
@@ -35,10 +35,10 @@ public class DiningArea : RoomManager
                        Instantiate(chairList[Random.Range(0, chairList.Length)], new Vector3(2, 0, i) + room.vectorOffset, Quaternion.Euler(new Vector3(-90, 270, 0))) as GameObject;
                 chair1.transform.SetParent(roomHolder);
                 GameObject table1 =
-                       Instantiate(tableList[Random.Range(0, tableList.Length)], new Vector3(3, 0, i) + room.vectorOffset, Quaternion.Euler(new Vector3(-90, 270, 0))) as GameObject;
+                       Instantiate(tableList[Random.Range(0, tableList.Length)], new Vector3(3, .5f, i) + room.vectorOffset, Quaternion.Euler(new Vector3(-90, 270, 0))) as GameObject;
                 table1.transform.SetParent(roomHolder);
                 GameObject table2 =
-                       Instantiate(tableList[Random.Range(0, tableList.Length)], new Vector3(room.col - 4, 0, i) + room.vectorOffset, Quaternion.Euler(new Vector3(-90, 270, 0))) as GameObject;
+                       Instantiate(tableList[Random.Range(0, tableList.Length)], new Vector3(room.col - 4, .5f, i) + room.vectorOffset, Quaternion.Euler(new Vector3(-90, 270, 0))) as GameObject;
                 table2.transform.SetParent(roomHolder);
                 GameObject chair2 =
                        Instantiate(chairList[Random.Range(0, chairList.Length)], new Vector3(room.col - 3, 0, i) + room.vectorOffset, Quaternion.Euler(new Vector3(-90, 90, 0))) as GameObject;
