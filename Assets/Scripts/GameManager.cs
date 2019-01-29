@@ -9,7 +9,8 @@ public enum Direction
 
 public class GameManager : MonoBehaviour {
 
-    GameObject tile;
+    public int score = 0;
+
     public BoardManager boardScript;
 
     // Use this for initialization
@@ -28,5 +29,10 @@ public class GameManager : MonoBehaviour {
     void InitGame()
     {
         boardScript.SetupBoard(0);
+    }
+
+    public void AddToScore(int numToAdd)
+    {
+        score += numToAdd;
     }
 }
