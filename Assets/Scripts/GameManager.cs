@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum Direction
 {
@@ -10,6 +11,8 @@ public enum Direction
 public class GameManager : MonoBehaviour {
 
     public int score = 0;
+
+    public Text scoreText;
 
     public BoardManager boardScript;
 
@@ -34,5 +37,11 @@ public class GameManager : MonoBehaviour {
     public void AddToScore(int numToAdd)
     {
         score += numToAdd;
+        SetScoreText();
+    }
+
+    void SetScoreText()
+    {
+        scoreText.text = "Score: " + score.ToString();
     }
 }
