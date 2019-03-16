@@ -511,8 +511,11 @@ MonoBehaviour:
   enableTeleport: 1
   targetListPolicy: {fileID: 0}
   enableBodyCollisions: 1
-  ignoreGrabbedCollisions: 1
-  ignoreCollisionsWith: []
+  ignoreGrabbedCollisions: 0
+  ignoreCollisionsWith:
+  - {fileID: 252853091}
+  - {fileID: 1201845691}
+  - {fileID: 1417394886}
   headsetYOffset: 0.2
   movementThreshold: 0.0015
   playAreaMovementThreshold: 0.00075
@@ -1282,6 +1285,7 @@ GameObject:
   - component: {fileID: 1201845694}
   - component: {fileID: 1201845693}
   - component: {fileID: 1201845692}
+  - component: {fileID: 1201845697}
   m_Layer: 0
   m_Name: LeftController
   m_TagString: Untagged
@@ -1432,6 +1436,18 @@ Transform:
   m_Father: {fileID: 542213914}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1201845697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1201845691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64e104da36bd3b04b90c6ae969ac66dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customColliderContainer: {fileID: 252853091}
 --- !u!1 &1275632356
 GameObject:
   m_ObjectHideFlags: 0
@@ -1880,6 +1896,8 @@ GameObject:
   - component: {fileID: 1417394889}
   - component: {fileID: 1417394888}
   - component: {fileID: 1417394887}
+  - component: {fileID: 1417394893}
+  - component: {fileID: 1417394892}
   m_Layer: 0
   m_Name: RightController
   m_TagString: Untagged
@@ -2030,6 +2048,36 @@ Transform:
   m_Father: {fileID: 542213914}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1417394892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1417394886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947b27445602ed640b885db7e667dfc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabButton: 4
+  grabPrecognition: 0
+  throwMultiplier: 1
+  createRigidBodyWhenNotTouching: 0
+  controllerAttachPoint: {fileID: 0}
+  controllerEvents: {fileID: 0}
+  interactTouch: {fileID: 0}
+--- !u!114 &1417394893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1417394886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64e104da36bd3b04b90c6ae969ac66dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customColliderContainer: {fileID: 0}
 --- !u!1 &1501701273
 GameObject:
   m_ObjectHideFlags: 0
