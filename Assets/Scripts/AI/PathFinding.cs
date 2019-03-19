@@ -1,12 +1,11 @@
-﻿
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /* Implementation and edit of A* pathfinding algorithm
  * https://github.com/SebLague/Pathfinding
  */
-/*
+ /*
 public class PathFinding : MonoBehaviour {
 
     List<Vector3> grid;

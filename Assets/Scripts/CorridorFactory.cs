@@ -4,19 +4,23 @@ using UnityEngine;
 
 public enum CorridorType
 {
-    Default, Tall
+    Default, Tall, Painting
 }
 
 public class CorridorFactory : MonoBehaviour
 {
     public CorridorManager defaultCorrdior;
     public CorridorTestTall test;
+    public CorridorPaintings paintingCorridor;
+
+    public bool paintingMade = false;
 
     public void InitializeScripts()
     {
         // empty tall and short corridors
         defaultCorrdior = GetComponent<CorridorManager>();
         test = GetComponent<CorridorTestTall>();
+        paintingCorridor = GetComponent<CorridorPaintings>();
     }
 
     // factory for the different corridor scripts
@@ -24,7 +28,15 @@ public class CorridorFactory : MonoBehaviour
     {
         int choice = Random.Range(0, 10);
 
-        if (choice > 4)
+        if (choice == 1 && !paintingMade)
+        {
+            paintingCorridor.SetupCorridor(corridor);
+            paintingCorridor.SetupConnection(rooms[index], rooms[bestIndex], inOut);
+            paintingCorridor.AddCorridorFloor(corridor);
+            corridor.setType(CorridorType.Painting);
+            paintingMade = true;
+        }
+        else if (choice > 4)
         {
             defaultCorrdior.SetupCorridor(corridor);
             defaultCorrdior.SetupConnection(rooms[index], rooms[bestIndex], inOut);
@@ -49,6 +61,10 @@ public class CorridorFactory : MonoBehaviour
         else if (corridor.corridorType == CorridorType.Tall)
         {
             test.AddCorridorWalls(corridor);
+        }
+        else if (corridor.corridorType == CorridorType.Painting)
+        {
+            paintingCorridor.AddCorridorWalls(corridor);
         }
     }
 }
