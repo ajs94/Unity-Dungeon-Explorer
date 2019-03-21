@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4507782054905504}
   - component: {fileID: 33978657131033604}
   - component: {fileID: 23648574868504770}
-  - component: {fileID: 95680613089611326}
+  - component: {fileID: 64500329120147304}
   m_Layer: 0
   m_Name: painting_plantinga
   m_TagString: Untagged
@@ -83,20 +83,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1968201609593212}
   m_Mesh: {fileID: 4300000, guid: 6f608897211f27b4cbf92b2ecb1d8add, type: 3}
---- !u!95 &95680613089611326
-Animator:
-  serializedVersion: 3
+--- !u!64 &64500329120147304
+MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1968201609593212}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 6f608897211f27b4cbf92b2ecb1d8add, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 6f608897211f27b4cbf92b2ecb1d8add, type: 3}

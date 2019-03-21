@@ -28,7 +28,7 @@ public class CorridorFactory : MonoBehaviour
     {
         int choice = Random.Range(0, 10);
 
-        if (choice == 1 && !paintingMade)
+        if (!paintingMade)
         {
             paintingCorridor.SetupCorridor(corridor);
             paintingCorridor.SetupConnection(rooms[index], rooms[bestIndex], inOut);
@@ -65,6 +65,8 @@ public class CorridorFactory : MonoBehaviour
         else if (corridor.corridorType == CorridorType.Painting)
         {
             paintingCorridor.AddCorridorWalls(corridor);
+            paintingCorridor.AddPaintingsY(corridor);
+            paintingCorridor.AddPaintingsX(corridor);
         }
     }
 }

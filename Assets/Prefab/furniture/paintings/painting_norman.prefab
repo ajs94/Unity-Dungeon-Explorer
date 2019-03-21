@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4996461493804326}
   - component: {fileID: 33041417676611860}
   - component: {fileID: 23367622899117566}
-  - component: {fileID: 95931931513231454}
+  - component: {fileID: 64967424483002220}
   m_Layer: 0
   m_Name: painting_norman
   m_TagString: Untagged
@@ -83,20 +83,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1351624464069126}
   m_Mesh: {fileID: 4300000, guid: 6f608897211f27b4cbf92b2ecb1d8add, type: 3}
---- !u!95 &95931931513231454
-Animator:
-  serializedVersion: 3
+--- !u!64 &64967424483002220
+MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1351624464069126}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 6f608897211f27b4cbf92b2ecb1d8add, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 6f608897211f27b4cbf92b2ecb1d8add, type: 3}

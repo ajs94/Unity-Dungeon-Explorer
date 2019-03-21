@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4239433026010218}
   - component: {fileID: 33260441749343082}
   - component: {fileID: 23189123776209966}
-  - component: {fileID: 95554402791237386}
+  - component: {fileID: 64520544380541918}
   m_Layer: 0
   m_Name: painting_shuurmen
   m_TagString: Untagged
@@ -83,20 +83,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1959864465095640}
   m_Mesh: {fileID: 4300000, guid: 6f608897211f27b4cbf92b2ecb1d8add, type: 3}
---- !u!95 &95554402791237386
-Animator:
-  serializedVersion: 3
+--- !u!64 &64520544380541918
+MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1959864465095640}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 6f608897211f27b4cbf92b2ecb1d8add, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 6f608897211f27b4cbf92b2ecb1d8add, type: 3}

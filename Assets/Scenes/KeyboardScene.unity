@@ -176,6 +176,48 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &270303988
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4669071936879620, guid: 1e068cfdebcddb24e93a5bf81d227bc0, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669071936879620, guid: 1e068cfdebcddb24e93a5bf81d227bc0, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669071936879620, guid: 1e068cfdebcddb24e93a5bf81d227bc0, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669071936879620, guid: 1e068cfdebcddb24e93a5bf81d227bc0, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669071936879620, guid: 1e068cfdebcddb24e93a5bf81d227bc0, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669071936879620, guid: 1e068cfdebcddb24e93a5bf81d227bc0, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669071936879620, guid: 1e068cfdebcddb24e93a5bf81d227bc0, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669071936879620, guid: 1e068cfdebcddb24e93a5bf81d227bc0, type: 2}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 1e068cfdebcddb24e93a5bf81d227bc0, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &647388271
 Prefab:
   m_ObjectHideFlags: 0
@@ -652,6 +694,7 @@ GameObject:
   - component: {fileID: 1354791055}
   - component: {fileID: 1354791051}
   - component: {fileID: 1354791052}
+  - component: {fileID: 1354791057}
   - component: {fileID: 1354791050}
   - component: {fileID: 1354791054}
   - component: {fileID: 1354791053}
@@ -724,7 +767,7 @@ MonoBehaviour:
   floorTiles:
   - {fileID: 1697811749459884, guid: 337fa37979369c4469fec029636866e5, type: 2}
   ceilingTiles:
-  - {fileID: 1209226881408922, guid: 5db40028c210155439404a308005f4b0, type: 2}
+  - {fileID: 1552184868773958, guid: 4866c5772dd8fd14cbd0a260262ef5fd, type: 2}
   wallTiles:
   - {fileID: 1902051691915054, guid: 6c5201a80324ba840bee3bc1d22e151a, type: 2}
   - {fileID: 1278850407652588, guid: edd34f8eed0ba414d9c96f8b67aff23b, type: 2}
@@ -754,7 +797,7 @@ MonoBehaviour:
   floorTiles:
   - {fileID: 1697811749459884, guid: 337fa37979369c4469fec029636866e5, type: 2}
   ceilingTiles:
-  - {fileID: 1209226881408922, guid: 5db40028c210155439404a308005f4b0, type: 2}
+  - {fileID: 1552184868773958, guid: 4866c5772dd8fd14cbd0a260262ef5fd, type: 2}
   wallTiles:
   - {fileID: 1902051691915054, guid: 6c5201a80324ba840bee3bc1d22e151a, type: 2}
   - {fileID: 1278850407652588, guid: edd34f8eed0ba414d9c96f8b67aff23b, type: 2}
@@ -779,7 +822,7 @@ MonoBehaviour:
   floorTiles:
   - {fileID: 1384932947961346, guid: 4e194b465392e2840a4680716e2e9dc4, type: 2}
   ceilingTiles:
-  - {fileID: 1209226881408922, guid: 5db40028c210155439404a308005f4b0, type: 2}
+  - {fileID: 1552184868773958, guid: 4866c5772dd8fd14cbd0a260262ef5fd, type: 2}
   wallTiles:
   - {fileID: 1922748569263642, guid: f6885e709ad6eaa48a0dfbbf6c945c05, type: 2}
   - {fileID: 1310946502084018, guid: 788896708a0a93c428af823cfbb797eb, type: 2}
@@ -806,7 +849,7 @@ MonoBehaviour:
   floorTiles:
   - {fileID: 1384932947961346, guid: 4e194b465392e2840a4680716e2e9dc4, type: 2}
   ceilingTiles:
-  - {fileID: 1209226881408922, guid: 5db40028c210155439404a308005f4b0, type: 2}
+  - {fileID: 1552184868773958, guid: 4866c5772dd8fd14cbd0a260262ef5fd, type: 2}
   wallTiles:
   - {fileID: 1922748569263642, guid: f6885e709ad6eaa48a0dfbbf6c945c05, type: 2}
   - {fileID: 1310946502084018, guid: 788896708a0a93c428af823cfbb797eb, type: 2}
@@ -844,7 +887,7 @@ MonoBehaviour:
   - {fileID: 1192474190075828, guid: 402513c7d70ddf544a06c2078ed80b33, type: 2}
   - {fileID: 1143171500175134, guid: cdd9bed56dcd6724c9da5ba42db61af9, type: 2}
   ceilingTiles:
-  - {fileID: 1209226881408922, guid: 5db40028c210155439404a308005f4b0, type: 2}
+  - {fileID: 1552184868773958, guid: 4866c5772dd8fd14cbd0a260262ef5fd, type: 2}
   wallTiles:
   - {fileID: 1922748569263642, guid: f6885e709ad6eaa48a0dfbbf6c945c05, type: 2}
   - {fileID: 1310946502084018, guid: 788896708a0a93c428af823cfbb797eb, type: 2}
@@ -865,6 +908,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultCorrdior: {fileID: 0}
   test: {fileID: 0}
+  paintingCorridor: {fileID: 0}
+  paintingMade: 0
 --- !u!114 &1354791055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -879,6 +924,7 @@ MonoBehaviour:
   defaultRoom: {fileID: 0}
   test: {fileID: 0}
   diningRoom: {fileID: 0}
+  tableRoom: {fileID: 0}
 --- !u!114 &1354791056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -899,7 +945,7 @@ MonoBehaviour:
   floorTiles:
   - {fileID: 1309774087548764, guid: 9705a6a503f2a0149b8c1139603d53e5, type: 2}
   ceilingTiles:
-  - {fileID: 1209226881408922, guid: 5db40028c210155439404a308005f4b0, type: 2}
+  - {fileID: 1552184868773958, guid: 4866c5772dd8fd14cbd0a260262ef5fd, type: 2}
   wallTiles:
   - {fileID: 1922748569263642, guid: f6885e709ad6eaa48a0dfbbf6c945c05, type: 2}
   - {fileID: 1310946502084018, guid: 788896708a0a93c428af823cfbb797eb, type: 2}
@@ -914,6 +960,40 @@ MonoBehaviour:
   - {fileID: 1968201609593212, guid: 48adea117f55fee428ebf022c63bb415, type: 2}
   - {fileID: 1959864465095640, guid: 20ed4ac9618faf44587d611f80619cbd, type: 2}
   - {fileID: 1799888595767762, guid: 71374d324eb736d44b33db283651bf64, type: 2}
+--- !u!114 &1354791057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1354791045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ea692d5fb3a4824bbbecdb76c9f11f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallHeight: 1
+  ceilingHeight: 2
+  torch: {fileID: 1610051588534984, guid: 8be0f9a3a3954b84eb57667289e28155, type: 2}
+  floorTiles:
+  - {fileID: 1309774087548764, guid: 9705a6a503f2a0149b8c1139603d53e5, type: 2}
+  ceilingTiles:
+  - {fileID: 1552184868773958, guid: 4866c5772dd8fd14cbd0a260262ef5fd, type: 2}
+  wallTiles:
+  - {fileID: 1922748569263642, guid: f6885e709ad6eaa48a0dfbbf6c945c05, type: 2}
+  - {fileID: 1310946502084018, guid: 788896708a0a93c428af823cfbb797eb, type: 2}
+  - {fileID: 1511183138748838, guid: 4b0e478ec6e38d34883dbcc03f8f31c7, type: 2}
+  - {fileID: 1048149262871002, guid: a70814ddafb86264fbaefe276c0338d2, type: 2}
+  - {fileID: 1870042893306264, guid: a696ae7a3125dd54ab586532edc21ffa, type: 2}
+  - {fileID: 1106654115508468, guid: 19c0e05ab3572854e84cb3173fd8b840, type: 2}
+  roomHolder: {fileID: 0}
+  gridPosition: []
+  tableList:
+  - {fileID: 1576171580987104, guid: be84eafac363cd24da5cb0ccfdef525c, type: 2}
+  - {fileID: 1284048965050626, guid: 07a94f05cb7f7e048bcadeb5e8b52651, type: 2}
+  chairList:
+  - {fileID: 1203111467471282, guid: e52744c26018498438672806be86e468, type: 2}
+  shelfList:
+  - {fileID: 1946983407187640, guid: 78892e9ebd08d154eac593aeea32470d, type: 2}
 --- !u!1001 &1634841764
 Prefab:
   m_ObjectHideFlags: 0
