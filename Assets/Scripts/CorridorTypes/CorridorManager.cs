@@ -11,19 +11,19 @@ public class CorridorManager : MonoBehaviour
     public float wallHeight = 1;
     public float ceilingHeight = 2;
 
-    public int corridorWidth;
-    private int corridorWidthMax = 5;    // exclusive
+    public int corridorWidthMax = 5;    // exclusive
 
     public GameObject door;
     public GameObject torch;
 
     public GameObject[] floorTiles;
     public GameObject[] ceilingTiles;
+    public GameObject[] doorWayCeilingTiles;
     public GameObject[] wallTiles;
 
-    private Vector3 currentPos;
-    private Vector3 startPos;
-    private Vector3 endPos;
+    public Vector3 currentPos;
+    public Vector3 startPos;
+    public Vector3 endPos;
 
     private bool doorway1Made = false;
     private bool doorway2Made = false;
@@ -31,21 +31,21 @@ public class CorridorManager : MonoBehaviour
     /* the creation functions for doorways
      * inOut is true if wall is facing north
      */
-    public void CreateVerticalDoorway(Vector3 offset, bool inOut)
+    public virtual void CreateVerticalDoorway(Vector3 offset, bool inOut)
     {
         currentCorridor.corridorWallHolder = new GameObject("CorridorWalls").transform;
 
-        for (int i = 0; i < corridorWidth; i++)
+        for (int i = 0; i < currentCorridor.corridorWidth; i++)
         {
             // build door and adjacent walls
-            if (i == Math.Floor(corridorWidth / 2.0))
+            if (i == Math.Floor(currentCorridor.corridorWidth / 2.0))
             {
                 GameObject instance =
                     Instantiate(door, currentPos + new Vector3(i - .025f, 1, 0) + offset,
                     Quaternion.Euler(new Vector3(0, -180, 0))) as GameObject;
                 instance.transform.SetParent(currentCorridor.corridorWallHolder);
 
-                GameObject instance1 = Instantiate(ceilingTiles[Random.Range(0, ceilingTiles.Length)], currentPos + new Vector3(i, 2, 0) + offset,
+                GameObject instance1 = Instantiate(doorWayCeilingTiles[Random.Range(0, doorWayCeilingTiles.Length)], currentPos + new Vector3(i, 2, 0) + offset,
                     Quaternion.Euler(new Vector3(-90, 0, 0))) as GameObject;
                 instance1.transform.SetParent(currentCorridor.corridorWallHolder);
 
@@ -71,14 +71,14 @@ public class CorridorManager : MonoBehaviour
                 }
             }
             // build door and adjacent walls
-            else if (i == Math.Floor(corridorWidth / 2.0) - 1)
+            else if (i == Math.Floor(currentCorridor.corridorWidth / 2.0) - 1)
             {
                 GameObject instance =
                     Instantiate(door, currentPos + new Vector3(i + .025f, 1, 0) + offset,
                     Quaternion.Euler(new Vector3(0, 0, 0))) as GameObject;
                 instance.transform.SetParent(currentCorridor.corridorWallHolder);
 
-                GameObject instance1 = Instantiate(ceilingTiles[Random.Range(0, ceilingTiles.Length)], currentPos + new Vector3(i, 2, 0) + offset,
+                GameObject instance1 = Instantiate(doorWayCeilingTiles[Random.Range(0, doorWayCeilingTiles.Length)], currentPos + new Vector3(i, 2, 0) + offset,
                     Quaternion.Euler(new Vector3(-90, 0, 0))) as GameObject;
                 instance1.transform.SetParent(currentCorridor.corridorWallHolder);
 
@@ -124,20 +124,20 @@ public class CorridorManager : MonoBehaviour
         }
     }
 
-    public void CreateHorizDoorway(Vector3 offset, bool inOut)
+    public virtual void CreateHorizDoorway(Vector3 offset, bool inOut)
     {
         currentCorridor.corridorWallHolder = new GameObject("CorridorWalls").transform;
 
-        for (int i = 0; i < corridorWidth; i++)
+        for (int i = 0; i < currentCorridor.corridorWidth; i++)
         {
             // build door and adjacent walls
-            if (i == (corridorWidth / 2))
+            if (i == (currentCorridor.corridorWidth / 2))
             {
                 GameObject instance =
                     Instantiate(door, currentPos + new Vector3(0, 1, i - .025f) + offset, Quaternion.Euler(new Vector3(0, 90, 0))) as GameObject;
                 instance.transform.SetParent(currentCorridor.corridorWallHolder);
 
-                GameObject instance1 = Instantiate(ceilingTiles[Random.Range(0, ceilingTiles.Length)], currentPos + new Vector3(0, 2, i) + offset,
+                GameObject instance1 = Instantiate(doorWayCeilingTiles[Random.Range(0, doorWayCeilingTiles.Length)], currentPos + new Vector3(0, 2, i) + offset,
                     Quaternion.Euler(new Vector3(-90, 0, 0))) as GameObject;
                 instance1.transform.SetParent(currentCorridor.corridorWallHolder);
 
@@ -163,13 +163,13 @@ public class CorridorManager : MonoBehaviour
                 }
             }
             // build door and adjacent walls
-            else if (i == (corridorWidth / 2) - 1)
+            else if (i == (currentCorridor.corridorWidth / 2) - 1)
             {
                 GameObject instance =
                     Instantiate(door, currentPos + new Vector3(0, 1, i + .025f) + offset, Quaternion.Euler(new Vector3(0, -90, 0))) as GameObject;
                 instance.transform.SetParent(currentCorridor.corridorWallHolder);
 
-                GameObject instance1 = Instantiate(ceilingTiles[Random.Range(0, ceilingTiles.Length)], currentPos + new Vector3(0, 2, i) + offset,
+                GameObject instance1 = Instantiate(doorWayCeilingTiles[Random.Range(0, doorWayCeilingTiles.Length)], currentPos + new Vector3(0, 2, i) + offset,
                     Quaternion.Euler(new Vector3(-90, 0, 0))) as GameObject;
                 instance1.transform.SetParent(currentCorridor.corridorWallHolder);
 
@@ -218,7 +218,7 @@ public class CorridorManager : MonoBehaviour
     // to fill the space for when a doorway hits a collision
     public void VertDoorwayToWall(Vector3 offset, bool inOut)
     {
-        for (int i = 0; i < corridorWidth; i++)
+        for (int i = 0; i < currentCorridor.corridorWidth; i++)
         {
             if (inOut)
             {
@@ -246,7 +246,7 @@ public class CorridorManager : MonoBehaviour
     }
     public void HorzDoorwayToWall(Vector3 offset, bool inOut)
     {
-        for (int i = 0; i < corridorWidth; i++)
+        for (int i = 0; i < currentCorridor.corridorWidth; i++)
         {
             if (inOut)
             {
@@ -274,15 +274,15 @@ public class CorridorManager : MonoBehaviour
     }
 
     // TODO: if outside length/width make sure corridor is small enough
-    public void AssignWidth(Room room1, Room room2)
+    public virtual void AssignWidth(Room room1, Room room2)
     {
         startPos = room1.vectorOffset;
 
-        corridorWidth = Random.Range(2, corridorWidthMax);
+        currentCorridor.corridorWidth = Random.Range(2, corridorWidthMax);
 
         // determine the width of the hallway
         // on the side
-        if (((room1.vectorOffset.z + room1.rows) - room2.vectorOffset.z >= corridorWidth) &&
+        if (((room1.vectorOffset.z + room1.rows) - room2.vectorOffset.z >= currentCorridor.corridorWidth) &&
                 (room1.vectorOffset.z + room1.rows) > room2.vectorOffset.z)
         {
             currentPos = new Vector3((room1.col / 2), 0f,
@@ -291,7 +291,7 @@ public class CorridorManager : MonoBehaviour
                 currentPos.z - room2.vectorOffset.z) + room2.vectorOffset;
         }
         // above right-ish
-        else if ((room1.vectorOffset.x + room1.col - room2.vectorOffset.x >= corridorWidth) &&
+        else if ((room1.vectorOffset.x + room1.col - room2.vectorOffset.x >= currentCorridor.corridorWidth) &&
                 (room1.vectorOffset.x + room1.col) > room2.vectorOffset.x &&
                 (room1.vectorOffset.x < room2.vectorOffset.x))
         {
@@ -299,7 +299,7 @@ public class CorridorManager : MonoBehaviour
             endPos = new Vector3(currentPos.x - room2.vectorOffset.x, 0f, (room2.col / 2)) + room2.vectorOffset;
         }
         // above left-ish
-        else if ((room2.vectorOffset.x + room2.col - room1.vectorOffset.x >= corridorWidth) &&
+        else if ((room2.vectorOffset.x + room2.col - room1.vectorOffset.x >= currentCorridor.corridorWidth) &&
                 (room2.vectorOffset.x + room2.col) > room1.vectorOffset.x &&
                 (room2.vectorOffset.x < room1.vectorOffset.x))
         {
@@ -375,7 +375,7 @@ public class CorridorManager : MonoBehaviour
     {
         while (currentPos.z < endPos.z)
         {
-            for (int x = 0; x < corridorWidth; x++)
+            for (int x = 0; x < currentCorridor.corridorWidth; x++)
             {
                 bool outsideRoom1 = (currentPos.x + x < room1.vectorOffset.x || currentPos.z < room1.vectorOffset.z) ||
                                     (currentPos.x > room1.vectorOffset.x + room1.col - 1 || currentPos.z > room1.vectorOffset.z + room1.rows - 1);
@@ -384,7 +384,7 @@ public class CorridorManager : MonoBehaviour
 
                 if (outsideRoom1 && outsideRoom2)
                 {
-                    Collider[] intersecting = Physics.OverlapSphere(new Vector3(0, .5f, 0) + currentPos, corridorWidth / 2);
+                    Collider[] intersecting = Physics.OverlapSphere(new Vector3(0, .5f, 0) + currentPos, currentCorridor.corridorWidth / 2);
                     if (!doorway1Made && intersecting.Length != 0)
                     {
                         // doorway already there; run a failed routine
@@ -400,7 +400,7 @@ public class CorridorManager : MonoBehaviour
                 }
                 else if (outsideRoom1 && !outsideRoom2 && doorway1Made)
                 {
-                    Collider[] intersecting = Physics.OverlapSphere(new Vector3(0, .5f, 0) + currentPos, corridorWidth / 2);
+                    Collider[] intersecting = Physics.OverlapSphere(new Vector3(0, .5f, 0) + currentPos, currentCorridor.corridorWidth / 2);
                     if (!doorway2Made && intersecting.Length != 0)
                     {
                         // doorway already there; run a failed routine
@@ -425,7 +425,7 @@ public class CorridorManager : MonoBehaviour
         {
             while (currentPos.x <= endPos.x)
             {
-                for (int z = 0; z < corridorWidth; z++)
+                for (int z = 0; z < currentCorridor.corridorWidth; z++)
                 {
                     bool outsideRoom1 = (currentPos.x < room1.vectorOffset.x || currentPos.z + z < room1.vectorOffset.z) ||
                                         (currentPos.x > room1.vectorOffset.x + room1.col - 1 || currentPos.z > room1.vectorOffset.z + room1.rows - 1);
@@ -434,7 +434,7 @@ public class CorridorManager : MonoBehaviour
 
                     if (outsideRoom1 && outsideRoom2)
                     {
-                        Collider[] intersecting = Physics.OverlapSphere(new Vector3(0, .5f, 0) + currentPos, corridorWidth / 2);
+                        Collider[] intersecting = Physics.OverlapSphere(new Vector3(0, .5f, 0) + currentPos, currentCorridor.corridorWidth / 2);
                         if (!doorway1Made && intersecting.Length != 0)
                         {
                             // doorway already there; run a failed routine
@@ -450,7 +450,7 @@ public class CorridorManager : MonoBehaviour
                     }
                     else if (outsideRoom1 && !outsideRoom2 && doorway1Made)
                     {
-                        Collider[] intersecting = Physics.OverlapSphere(new Vector3(0, .5f, 0) + currentPos, corridorWidth / 2);
+                        Collider[] intersecting = Physics.OverlapSphere(new Vector3(0, .5f, 0) + currentPos, currentCorridor.corridorWidth / 2);
                         if (!doorway2Made && intersecting.Length != 0)
                         {
                             // doorway already there; run a failed routine
@@ -470,12 +470,12 @@ public class CorridorManager : MonoBehaviour
         // if to the left
         else if (currentPos.x > endPos.x)
         {
-            if (corridorWidth > 1)
-                currentPos += new Vector3(corridorWidth - 1, 0, 0);
+            if (currentCorridor.corridorWidth > 1)
+                currentPos += new Vector3(currentCorridor.corridorWidth - 1, 0, 0);
 
             while (currentPos.x >= endPos.x)
             {
-                for (int z = 0; z < corridorWidth; z++)
+                for (int z = 0; z < currentCorridor.corridorWidth; z++)
                 {
                     bool outsideRoom1 = (currentPos.x < room1.vectorOffset.x || currentPos.z + z < room1.vectorOffset.z) ||
                                         (currentPos.x > room1.vectorOffset.x + room1.col - 1 || currentPos.z > room1.vectorOffset.z + room1.rows - 1);
@@ -484,7 +484,7 @@ public class CorridorManager : MonoBehaviour
 
                     if (outsideRoom1 && outsideRoom2)
                     {
-                        Collider[] intersecting = Physics.OverlapSphere(new Vector3(0, .5f, 0) + currentPos, corridorWidth / 2);
+                        Collider[] intersecting = Physics.OverlapSphere(new Vector3(0, .5f, 0) + currentPos, currentCorridor.corridorWidth / 2);
                         if (!doorway1Made && intersecting.Length != 0)
                         {
                             // doorway already there; run a failed routine
@@ -500,7 +500,7 @@ public class CorridorManager : MonoBehaviour
                     }
                     else if (outsideRoom1 && !outsideRoom2 && doorway1Made)
                     {
-                        Collider[] intersecting = Physics.OverlapSphere(new Vector3(0, .5f, 0) + currentPos, corridorWidth / 2);
+                        Collider[] intersecting = Physics.OverlapSphere(new Vector3(0, .5f, 0) + currentPos, currentCorridor.corridorWidth / 2);
                         if (!doorway2Made && intersecting.Length != 0)
                         {
                             // doorway already there; run a failed routine
@@ -518,7 +518,7 @@ public class CorridorManager : MonoBehaviour
             }
         }
     }
-    public void AddCorridorFloor(Corridor corridor)
+    public virtual void AddCorridorFloor(Corridor corridor)
     {
         SetupCorridor(corridor);
 
@@ -533,7 +533,8 @@ public class CorridorManager : MonoBehaviour
                 instance.transform.SetParent(currentCorridor.corridorHolder);
 
                 Collider[] intersecting2 = Physics.OverlapSphere(tile + new Vector3(0, ceilingHeight, 0), .4f);
-                if (intersecting2.Length == 0)
+                Collider[] intersecting3 = Physics.OverlapSphere(tile + new Vector3(0, 1, 0), .4f);
+                if (intersecting2.Length == 0 && intersecting3.Length == 0)
                 {
                     GameObject instance2 = Instantiate(ceilingTiles[Random.Range(0, ceilingTiles.Length)], tile + new Vector3(0, ceilingHeight, 0),
                         Quaternion.Euler(new Vector3(-90, 0, 0))) as GameObject;

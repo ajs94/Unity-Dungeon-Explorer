@@ -4,13 +4,14 @@ using UnityEngine;
 
 public enum CorridorType
 {
-    Default, Tall, Painting
+    Default, Tall, Mined, Painting
 }
 
 public class CorridorFactory : MonoBehaviour
 {
     public CorridorManager defaultCorrdior;
     public CorridorTestTall test;
+    public CorridorMined minedCorridor;
     public CorridorPaintings paintingCorridor;
 
     public bool paintingMade = false;
@@ -20,6 +21,9 @@ public class CorridorFactory : MonoBehaviour
         // empty tall and short corridors
         defaultCorrdior = GetComponent<CorridorManager>();
         test = GetComponent<CorridorTestTall>();
+        
+        // designed corridors
+        minedCorridor = GetComponent<CorridorMined>();
         paintingCorridor = GetComponent<CorridorPaintings>();
     }
 
@@ -31,21 +35,24 @@ public class CorridorFactory : MonoBehaviour
         if (!paintingMade)
         {
             paintingCorridor.SetupCorridor(corridor);
+            paintingCorridor.AssignWidth(rooms[index], rooms[bestIndex]);
             paintingCorridor.SetupConnection(rooms[index], rooms[bestIndex], inOut);
             paintingCorridor.AddCorridorFloor(corridor);
             corridor.setType(CorridorType.Painting);
             paintingMade = true;
         }
-        else if (choice > 4)
+        else if (choice <= 1)
         {
-            defaultCorrdior.SetupCorridor(corridor);
-            defaultCorrdior.SetupConnection(rooms[index], rooms[bestIndex], inOut);
-            defaultCorrdior.AddCorridorFloor(corridor);
-            corridor.setType(CorridorType.Default);
+            minedCorridor.SetupCorridor(corridor);
+            minedCorridor.AssignWidth(rooms[index], rooms[bestIndex]);
+            minedCorridor.SetupConnection(rooms[index], rooms[bestIndex], inOut);
+            minedCorridor.AddCorridorFloor(corridor);
+            corridor.setType(CorridorType.Mined);
         }
-        else if (choice <= 4)
+        else if (choice > 1)
         {
             test.SetupCorridor(corridor);
+            test.AssignWidth(rooms[index], rooms[bestIndex]);
             test.SetupConnection(rooms[index], rooms[bestIndex], inOut);
             test.AddCorridorFloor(corridor);
             corridor.setType(CorridorType.Tall);
@@ -54,9 +61,9 @@ public class CorridorFactory : MonoBehaviour
 
     public void MakeCorridorWalls(Corridor corridor)
     {
-        if (corridor.corridorType == CorridorType.Default)
+        if (corridor.corridorType == CorridorType.Mined)
         {
-            defaultCorrdior.AddCorridorWalls(corridor);
+            minedCorridor.AddCorridorWalls(corridor);
         }
         else if (corridor.corridorType == CorridorType.Tall)
         {

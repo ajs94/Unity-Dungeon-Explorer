@@ -1,0 +1,413 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1706824095055102}
+  m_IsPrefabParent: 1
+--- !u!1 &1706824095055102
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4106675527040516}
+  - component: {fileID: 114620219803542684}
+  - component: {fileID: 114961154451007170}
+  - component: {fileID: 114881514580872882}
+  - component: {fileID: 114818832267903256}
+  - component: {fileID: 114702559572359958}
+  - component: {fileID: 114343912123981256}
+  - component: {fileID: 114979433538917272}
+  - component: {fileID: 114856807576815230}
+  - component: {fileID: 114742923450771050}
+  - component: {fileID: 114583830863740802}
+  - component: {fileID: 114229046682686674}
+  - component: {fileID: 114854900549159396}
+  - component: {fileID: 114971864735641268}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4106675527040516
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1706824095055102}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.05, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114229046682686674
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1706824095055102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ca017c21e852ac4cb5d964c08321c38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentCorridor: {fileID: 0}
+  wallHeight: 1
+  ceilingHeight: 2
+  corridorWidthMax: 5
+  door: {fileID: 1899733705831532, guid: 814ba9c6d0d98ae46899fd17b17534db, type: 2}
+  torch: {fileID: 1610051588534984, guid: 8be0f9a3a3954b84eb57667289e28155, type: 2}
+  floorTiles:
+  - {fileID: 1135639592031946, guid: 59d7394e4d6f2ab469db89040557f401, type: 2}
+  - {fileID: 1623373647895956, guid: bf1866819082f474daff8c8ad2e88b3d, type: 2}
+  - {fileID: 1605668176481392, guid: d80fcc2da4dfd98488f4c0b95d3d56dc, type: 2}
+  - {fileID: 1192474190075828, guid: 402513c7d70ddf544a06c2078ed80b33, type: 2}
+  - {fileID: 1143171500175134, guid: cdd9bed56dcd6724c9da5ba42db61af9, type: 2}
+  ceilingTiles:
+  - {fileID: 1552184868773958, guid: 4866c5772dd8fd14cbd0a260262ef5fd, type: 2}
+  doorWayCeilingTiles:
+  - {fileID: 1552184868773958, guid: 4866c5772dd8fd14cbd0a260262ef5fd, type: 2}
+  wallTiles:
+  - {fileID: 1922748569263642, guid: f6885e709ad6eaa48a0dfbbf6c945c05, type: 2}
+  - {fileID: 1310946502084018, guid: 788896708a0a93c428af823cfbb797eb, type: 2}
+  - {fileID: 1511183138748838, guid: 4b0e478ec6e38d34883dbcc03f8f31c7, type: 2}
+  - {fileID: 1048149262871002, guid: a70814ddafb86264fbaefe276c0338d2, type: 2}
+  - {fileID: 1870042893306264, guid: a696ae7a3125dd54ab586532edc21ffa, type: 2}
+  - {fileID: 1106654115508468, guid: 19c0e05ab3572854e84cb3173fd8b840, type: 2}
+  currentPos: {x: 0, y: 0, z: 0}
+  startPos: {x: 0, y: 0, z: 0}
+  endPos: {x: 0, y: 0, z: 0}
+--- !u!114 &114343912123981256
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1706824095055102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb3474c250caf0f4fa7a3c28028011a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallHeight: 1
+  ceilingHeight: 2
+  torch: {fileID: 1610051588534984, guid: 8be0f9a3a3954b84eb57667289e28155, type: 2}
+  floorTiles:
+  - {fileID: 1384932947961346, guid: 4e194b465392e2840a4680716e2e9dc4, type: 2}
+  ceilingTiles:
+  - {fileID: 1552184868773958, guid: 4866c5772dd8fd14cbd0a260262ef5fd, type: 2}
+  wallTiles:
+  - {fileID: 1922748569263642, guid: f6885e709ad6eaa48a0dfbbf6c945c05, type: 2}
+  - {fileID: 1310946502084018, guid: 788896708a0a93c428af823cfbb797eb, type: 2}
+  - {fileID: 1511183138748838, guid: 4b0e478ec6e38d34883dbcc03f8f31c7, type: 2}
+  - {fileID: 1048149262871002, guid: a70814ddafb86264fbaefe276c0338d2, type: 2}
+  - {fileID: 1870042893306264, guid: a696ae7a3125dd54ab586532edc21ffa, type: 2}
+  - {fileID: 1106654115508468, guid: 19c0e05ab3572854e84cb3173fd8b840, type: 2}
+  roomHolder: {fileID: 0}
+  gridPosition: []
+  tableList:
+  - {fileID: 1576171580987104, guid: be84eafac363cd24da5cb0ccfdef525c, type: 2}
+  chairList:
+  - {fileID: 1203111467471282, guid: e52744c26018498438672806be86e468, type: 2}
+--- !u!114 &114583830863740802
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1706824095055102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0916a69e6e1dec24babd787429953c68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultCorrdior: {fileID: 0}
+  test: {fileID: 0}
+  minedCorridor: {fileID: 0}
+  paintingCorridor: {fileID: 0}
+  paintingMade: 0
+--- !u!114 &114620219803542684
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1706824095055102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9850a89d82fae3c4b81befa495b6ed3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 0
+  scoreText: {fileID: 0}
+  boardScript: {fileID: 0}
+--- !u!114 &114702559572359958
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1706824095055102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd5af9845bb724a4c8b74b1149c37dff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallHeight: 1
+  ceilingHeight: 2
+  torch: {fileID: 1610051588534984, guid: 8be0f9a3a3954b84eb57667289e28155, type: 2}
+  floorTiles:
+  - {fileID: 1384932947961346, guid: 4e194b465392e2840a4680716e2e9dc4, type: 2}
+  ceilingTiles:
+  - {fileID: 1552184868773958, guid: 4866c5772dd8fd14cbd0a260262ef5fd, type: 2}
+  wallTiles:
+  - {fileID: 1922748569263642, guid: f6885e709ad6eaa48a0dfbbf6c945c05, type: 2}
+  - {fileID: 1310946502084018, guid: 788896708a0a93c428af823cfbb797eb, type: 2}
+  - {fileID: 1511183138748838, guid: 4b0e478ec6e38d34883dbcc03f8f31c7, type: 2}
+  - {fileID: 1048149262871002, guid: a70814ddafb86264fbaefe276c0338d2, type: 2}
+  - {fileID: 1870042893306264, guid: a696ae7a3125dd54ab586532edc21ffa, type: 2}
+  - {fileID: 1106654115508468, guid: 19c0e05ab3572854e84cb3173fd8b840, type: 2}
+  roomHolder: {fileID: 0}
+  gridPosition: []
+--- !u!114 &114742923450771050
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1706824095055102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8763ffc494220949b0965b5e5375f59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentCorridor: {fileID: 0}
+  wallHeight: 1
+  ceilingHeight: 2
+  corridorWidthMax: 5
+  door: {fileID: 1899733705831532, guid: 814ba9c6d0d98ae46899fd17b17534db, type: 2}
+  torch: {fileID: 1610051588534984, guid: 8be0f9a3a3954b84eb57667289e28155, type: 2}
+  floorTiles:
+  - {fileID: 1697811749459884, guid: 337fa37979369c4469fec029636866e5, type: 2}
+  ceilingTiles:
+  - {fileID: 1552184868773958, guid: 4866c5772dd8fd14cbd0a260262ef5fd, type: 2}
+  doorWayCeilingTiles:
+  - {fileID: 1552184868773958, guid: 4866c5772dd8fd14cbd0a260262ef5fd, type: 2}
+  wallTiles:
+  - {fileID: 1902051691915054, guid: 6c5201a80324ba840bee3bc1d22e151a, type: 2}
+  - {fileID: 1278850407652588, guid: edd34f8eed0ba414d9c96f8b67aff23b, type: 2}
+  - {fileID: 1392329593670234, guid: 74a144f237341f143ae26b3ca1442881, type: 2}
+  - {fileID: 1489769497914218, guid: 0d5a0a10e40430047b994d6a825b7186, type: 2}
+  - {fileID: 1249902547453190, guid: b09fc29bdf1bb8541842d9353b10092e, type: 2}
+  - {fileID: 1680380735966158, guid: cafbc457f7a77b04ca97da488425fb87, type: 2}
+  currentPos: {x: 0, y: 0, z: 0}
+  startPos: {x: 0, y: 0, z: 0}
+  endPos: {x: 0, y: 0, z: 0}
+--- !u!114 &114818832267903256
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1706824095055102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d05f2e9417f1c3a4691ad0ed36a0db10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultRoom: {fileID: 0}
+  test: {fileID: 0}
+  diningRoom: {fileID: 0}
+  tableRoom: {fileID: 0}
+  libraryRoom: {fileID: 0}
+--- !u!114 &114854900549159396
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1706824095055102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f80e14e4043ead4c89984b39154cb85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentCorridor: {fileID: 0}
+  wallHeight: 1
+  ceilingHeight: 2
+  corridorWidthMax: 5
+  door: {fileID: 1899733705831532, guid: 814ba9c6d0d98ae46899fd17b17534db, type: 2}
+  torch: {fileID: 1610051588534984, guid: 8be0f9a3a3954b84eb57667289e28155, type: 2}
+  floorTiles:
+  - {fileID: 1309774087548764, guid: 9705a6a503f2a0149b8c1139603d53e5, type: 2}
+  ceilingTiles:
+  - {fileID: 1552184868773958, guid: 4866c5772dd8fd14cbd0a260262ef5fd, type: 2}
+  doorWayCeilingTiles:
+  - {fileID: 1552184868773958, guid: 4866c5772dd8fd14cbd0a260262ef5fd, type: 2}
+  wallTiles:
+  - {fileID: 1922748569263642, guid: f6885e709ad6eaa48a0dfbbf6c945c05, type: 2}
+  - {fileID: 1310946502084018, guid: 788896708a0a93c428af823cfbb797eb, type: 2}
+  - {fileID: 1511183138748838, guid: 4b0e478ec6e38d34883dbcc03f8f31c7, type: 2}
+  - {fileID: 1048149262871002, guid: a70814ddafb86264fbaefe276c0338d2, type: 2}
+  - {fileID: 1870042893306264, guid: a696ae7a3125dd54ab586532edc21ffa, type: 2}
+  - {fileID: 1106654115508468, guid: 19c0e05ab3572854e84cb3173fd8b840, type: 2}
+  currentPos: {x: 0, y: 0, z: 0}
+  startPos: {x: 0, y: 0, z: 0}
+  endPos: {x: 0, y: 0, z: 0}
+  paintings:
+  - {fileID: 1591355355013306, guid: def1bae1f45db1545a71ee4b39013674, type: 2}
+  - {fileID: 1955563390568692, guid: 9d05a74243ba70f47a2a0e071974245c, type: 2}
+  - {fileID: 1351624464069126, guid: e6031d9cf9df12e4e8e40028839961ea, type: 2}
+  - {fileID: 1968201609593212, guid: 48adea117f55fee428ebf022c63bb415, type: 2}
+  - {fileID: 1959864465095640, guid: 20ed4ac9618faf44587d611f80619cbd, type: 2}
+  - {fileID: 1799888595767762, guid: 71374d324eb736d44b33db283651bf64, type: 2}
+--- !u!114 &114856807576815230
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1706824095055102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff131a3cb93c1f644a05808119b79592, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallHeight: 1
+  ceilingHeight: 2
+  torch: {fileID: 1610051588534984, guid: 8be0f9a3a3954b84eb57667289e28155, type: 2}
+  floorTiles:
+  - {fileID: 1309774087548764, guid: 9705a6a503f2a0149b8c1139603d53e5, type: 2}
+  ceilingTiles:
+  - {fileID: 1719997770235896, guid: 8adffa0a3dd842247afa02f0794a7b6e, type: 2}
+  - {fileID: 1509219187826154, guid: 8e4bed0a474bc2941b1cafd1562dbed5, type: 2}
+  - {fileID: 1105374723364320, guid: 681f26c004fa978419c767862c36a61d, type: 2}
+  - {fileID: 1906060853406224, guid: 2ca32ad9616f81b4bbb606dc3bf0f267, type: 2}
+  wallTiles:
+  - {fileID: 1757630405724362, guid: 10bb50c4b77610b4db939d006dee5ee4, type: 2}
+  - {fileID: 1323639578798532, guid: c6dfa1c3194e28c4eae54b55528b6b86, type: 2}
+  - {fileID: 1766327259228134, guid: ba7ad270b9e9288458ad23aa329567e3, type: 2}
+  - {fileID: 1605678714232036, guid: 049761a654b33684f90c14ab06baf389, type: 2}
+  roomHolder: {fileID: 0}
+  gridPosition: []
+  bookshelves:
+  - {fileID: 1616141460823138, guid: 1e068cfdebcddb24e93a5bf81d227bc0, type: 2}
+--- !u!114 &114881514580872882
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1706824095055102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc3314887ba5adc41be251590c262d1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallHeight: 1
+  ceilingHeight: 2
+  torch: {fileID: 1610051588534984, guid: 8be0f9a3a3954b84eb57667289e28155, type: 2}
+  floorTiles:
+  - {fileID: 1697811749459884, guid: 337fa37979369c4469fec029636866e5, type: 2}
+  ceilingTiles:
+  - {fileID: 1552184868773958, guid: 4866c5772dd8fd14cbd0a260262ef5fd, type: 2}
+  wallTiles:
+  - {fileID: 1902051691915054, guid: 6c5201a80324ba840bee3bc1d22e151a, type: 2}
+  - {fileID: 1278850407652588, guid: edd34f8eed0ba414d9c96f8b67aff23b, type: 2}
+  - {fileID: 1392329593670234, guid: 74a144f237341f143ae26b3ca1442881, type: 2}
+  - {fileID: 1489769497914218, guid: 0d5a0a10e40430047b994d6a825b7186, type: 2}
+  - {fileID: 1249902547453190, guid: b09fc29bdf1bb8541842d9353b10092e, type: 2}
+  - {fileID: 1680380735966158, guid: cafbc457f7a77b04ca97da488425fb87, type: 2}
+  roomHolder: {fileID: 0}
+  gridPosition: []
+--- !u!114 &114961154451007170
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1706824095055102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 491f31e2bcbb45f41a50d6b0a58905ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  corridors: []
+  moreCorridors: []
+  mapSizeX: 150
+  mapSizeY: 75
+  roomFactory: {fileID: 0}
+  corridorFactory: {fileID: 0}
+--- !u!114 &114971864735641268
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1706824095055102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0eb1dde7bb5cd034b9d6ba2431495dd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentCorridor: {fileID: 0}
+  wallHeight: 1
+  ceilingHeight: 2
+  corridorWidthMax: 5
+  door: {fileID: 1899733705831532, guid: 814ba9c6d0d98ae46899fd17b17534db, type: 2}
+  torch: {fileID: 1610051588534984, guid: 8be0f9a3a3954b84eb57667289e28155, type: 2}
+  floorTiles:
+  - {fileID: 1697811749459884, guid: 337fa37979369c4469fec029636866e5, type: 2}
+  ceilingTiles:
+  - {fileID: 1719997770235896, guid: 8adffa0a3dd842247afa02f0794a7b6e, type: 2}
+  - {fileID: 1509219187826154, guid: 8e4bed0a474bc2941b1cafd1562dbed5, type: 2}
+  - {fileID: 1105374723364320, guid: 681f26c004fa978419c767862c36a61d, type: 2}
+  - {fileID: 1906060853406224, guid: 2ca32ad9616f81b4bbb606dc3bf0f267, type: 2}
+  doorWayCeilingTiles:
+  - {fileID: 1719997770235896, guid: 8adffa0a3dd842247afa02f0794a7b6e, type: 2}
+  - {fileID: 1509219187826154, guid: 8e4bed0a474bc2941b1cafd1562dbed5, type: 2}
+  - {fileID: 1105374723364320, guid: 681f26c004fa978419c767862c36a61d, type: 2}
+  - {fileID: 1906060853406224, guid: 2ca32ad9616f81b4bbb606dc3bf0f267, type: 2}
+  wallTiles:
+  - {fileID: 1757630405724362, guid: 10bb50c4b77610b4db939d006dee5ee4, type: 2}
+  - {fileID: 1323639578798532, guid: c6dfa1c3194e28c4eae54b55528b6b86, type: 2}
+  - {fileID: 1766327259228134, guid: ba7ad270b9e9288458ad23aa329567e3, type: 2}
+  - {fileID: 1605678714232036, guid: 049761a654b33684f90c14ab06baf389, type: 2}
+  currentPos: {x: 0, y: 0, z: 0}
+  startPos: {x: 0, y: 0, z: 0}
+  endPos: {x: 0, y: 0, z: 0}
+--- !u!114 &114979433538917272
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1706824095055102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ea692d5fb3a4824bbbecdb76c9f11f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallHeight: 1
+  ceilingHeight: 2
+  torch: {fileID: 1610051588534984, guid: 8be0f9a3a3954b84eb57667289e28155, type: 2}
+  floorTiles:
+  - {fileID: 1309774087548764, guid: 9705a6a503f2a0149b8c1139603d53e5, type: 2}
+  ceilingTiles:
+  - {fileID: 1552184868773958, guid: 4866c5772dd8fd14cbd0a260262ef5fd, type: 2}
+  wallTiles:
+  - {fileID: 1922748569263642, guid: f6885e709ad6eaa48a0dfbbf6c945c05, type: 2}
+  - {fileID: 1310946502084018, guid: 788896708a0a93c428af823cfbb797eb, type: 2}
+  - {fileID: 1511183138748838, guid: 4b0e478ec6e38d34883dbcc03f8f31c7, type: 2}
+  - {fileID: 1048149262871002, guid: a70814ddafb86264fbaefe276c0338d2, type: 2}
+  - {fileID: 1870042893306264, guid: a696ae7a3125dd54ab586532edc21ffa, type: 2}
+  - {fileID: 1106654115508468, guid: 19c0e05ab3572854e84cb3173fd8b840, type: 2}
+  roomHolder: {fileID: 0}
+  gridPosition: []
+  tableList:
+  - {fileID: 1576171580987104, guid: be84eafac363cd24da5cb0ccfdef525c, type: 2}
+  - {fileID: 1284048965050626, guid: 07a94f05cb7f7e048bcadeb5e8b52651, type: 2}
+  chairList:
+  - {fileID: 1203111467471282, guid: e52744c26018498438672806be86e468, type: 2}
+  shelfList:
+  - {fileID: 1946983407187640, guid: 78892e9ebd08d154eac593aeea32470d, type: 2}

@@ -31,7 +31,7 @@ public class BoardManager : MonoBehaviour
         return false;
     }
 
-    // create a Room object (not instantiated in game yet)
+    // create a Room object (not instantiated in game yet just the object)
     public Room CreateRoom()
     {
         Room room = new Room();

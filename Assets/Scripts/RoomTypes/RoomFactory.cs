@@ -6,8 +6,10 @@ public class RoomFactory : MonoBehaviour
 {
     public RoomManager defaultRoom;
     public TestTall test;
+
     public DiningArea diningRoom;
     public RoomTables tableRoom;
+    public RoomLibrary libraryRoom;
 
     public void InitializeScripts()
     {
@@ -17,6 +19,7 @@ public class RoomFactory : MonoBehaviour
 
         diningRoom = GetComponent<DiningArea>();
         tableRoom = GetComponent<RoomTables>();
+        libraryRoom = GetComponent<RoomLibrary>();
     }
 
     // factory for the different room scripts
@@ -24,7 +27,11 @@ public class RoomFactory : MonoBehaviour
     {
         int choice = Random.Range(0, 5);
 
-        if (choice >= 2)
+        if (choice >= 3)
+        {
+            libraryRoom.SetupScene(rooms[index]);
+        }
+        else if (choice == 2)
         {
             tableRoom.SetupScene(rooms[index]);
         }
