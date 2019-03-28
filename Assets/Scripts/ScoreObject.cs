@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScoreObject : MonoBehaviour {
-
+public class ScoreObject : MonoBehaviour 
+{
     private GameManager gameScript;
-
     public int objectWorth = 10;
     
     // initialize the reference to the GameManager script

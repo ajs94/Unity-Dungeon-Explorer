@@ -9,7 +9,6 @@ public class RoomLibrary : RoomManager {
     public void PlaceBookshelves()
     {
         int numBookshelves = (room.col - 4) / 2;
-        print(numBookshelves);
 
         for (int i = 0; i < numBookshelves; i++)
         {
