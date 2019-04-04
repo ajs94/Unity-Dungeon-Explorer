@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿/*using System.Collections;
 using VRTK;
 using System.Collections.Generic;
 using UnityEngine;
@@ -45,3 +45,4 @@ public class ScoreObjectVR : MonoBehaviour
         print("Past waiting");
     }
 }
+*/
