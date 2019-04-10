@@ -118,6 +118,8 @@ MonoBehaviour:
   gridPosition: []
   tableList:
   - {fileID: 1576171580987104, guid: be84eafac363cd24da5cb0ccfdef525c, type: 2}
+  - {fileID: 1438908907899580, guid: 07a94f05cb7f7e048bcadeb5e8b52651, type: 2}
+  - {fileID: 1714244564276846, guid: f6002077bdcf65f4a93fd7aa058723a4, type: 2}
   chairList:
   - {fileID: 1203111467471282, guid: e52744c26018498438672806be86e468, type: 2}
 --- !u!114 &114583830863740802
@@ -296,6 +298,7 @@ MonoBehaviour:
   gridPosition: []
   bookshelves:
   - {fileID: 1616141460823138, guid: 1e068cfdebcddb24e93a5bf81d227bc0, type: 2}
+  - {fileID: 1329634091918894, guid: 775009cf91f21ba4b8d8b4d6e534a2e0, type: 2}
 --- !u!114 &114881514580872882
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -406,7 +409,8 @@ MonoBehaviour:
   gridPosition: []
   tableList:
   - {fileID: 1576171580987104, guid: be84eafac363cd24da5cb0ccfdef525c, type: 2}
-  - {fileID: 1284048965050626, guid: 07a94f05cb7f7e048bcadeb5e8b52651, type: 2}
+  - {fileID: 1714244564276846, guid: f6002077bdcf65f4a93fd7aa058723a4, type: 2}
+  - {fileID: 1438908907899580, guid: 07a94f05cb7f7e048bcadeb5e8b52651, type: 2}
   chairList:
   - {fileID: 1203111467471282, guid: e52744c26018498438672806be86e468, type: 2}
   shelfList:
