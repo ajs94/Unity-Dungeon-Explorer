@@ -119,9 +119,26 @@ MonoBehaviour:
   tableList:
   - {fileID: 1576171580987104, guid: be84eafac363cd24da5cb0ccfdef525c, type: 2}
   - {fileID: 1438908907899580, guid: 07a94f05cb7f7e048bcadeb5e8b52651, type: 2}
-  - {fileID: 1714244564276846, guid: f6002077bdcf65f4a93fd7aa058723a4, type: 2}
+  - {fileID: 1571087942669608, guid: 0f5561291f4c49447866294cff987cd8, type: 2}
+  - {fileID: 1525015751884788, guid: 78978e32d68201f41aef63e7d547c731, type: 2}
+  - {fileID: 1358572605957564, guid: efa504a3df627bf4a9c63f05befce43f, type: 2}
+  - {fileID: 1626745097314310, guid: 6ae2022ef4ee50c4aa29744f1cb01130, type: 2}
+  - {fileID: 1118595640643204, guid: b3797cf4db6efb74f8b26cff008ad69a, type: 2}
+  - {fileID: 1517517733751184, guid: 170f4dee206addd4fb39258f2a4fb42d, type: 2}
   chairList:
   - {fileID: 1203111467471282, guid: e52744c26018498438672806be86e468, type: 2}
+  shelfList:
+  - {fileID: 1946983407187640, guid: 78892e9ebd08d154eac593aeea32470d, type: 2}
+  - {fileID: 1257372759060230, guid: 513fb7790dc32a844bf47dc5b87b6977, type: 2}
+  - {fileID: 1472963586035506, guid: 5cf3de5988a49044da97450e8b6f494c, type: 2}
+  - {fileID: 1917741650833062, guid: c1a3d888930e5c1478a8220d5fad47bc, type: 2}
+  paintings:
+  - {fileID: 1591355355013306, guid: def1bae1f45db1545a71ee4b39013674, type: 2}
+  - {fileID: 1955563390568692, guid: 9d05a74243ba70f47a2a0e071974245c, type: 2}
+  - {fileID: 1351624464069126, guid: e6031d9cf9df12e4e8e40028839961ea, type: 2}
+  - {fileID: 1968201609593212, guid: 48adea117f55fee428ebf022c63bb415, type: 2}
+  - {fileID: 1959864465095640, guid: 20ed4ac9618faf44587d611f80619cbd, type: 2}
+  - {fileID: 1799888595767762, guid: 71374d324eb736d44b33db283651bf64, type: 2}
 --- !u!114 &114583830863740802
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -411,7 +428,13 @@ MonoBehaviour:
   - {fileID: 1576171580987104, guid: be84eafac363cd24da5cb0ccfdef525c, type: 2}
   - {fileID: 1714244564276846, guid: f6002077bdcf65f4a93fd7aa058723a4, type: 2}
   - {fileID: 1438908907899580, guid: 07a94f05cb7f7e048bcadeb5e8b52651, type: 2}
+  - {fileID: 1150923713431884, guid: 253f03e11114f2e4a9d9e060a40a0b3a, type: 2}
+  - {fileID: 1571087942669608, guid: 0f5561291f4c49447866294cff987cd8, type: 2}
   chairList:
   - {fileID: 1203111467471282, guid: e52744c26018498438672806be86e468, type: 2}
   shelfList:
   - {fileID: 1946983407187640, guid: 78892e9ebd08d154eac593aeea32470d, type: 2}
+  - {fileID: 1274678096999684, guid: 6ff0b362511dcdb448b7e1c1fa10cbba, type: 2}
+  - {fileID: 1917741650833062, guid: c1a3d888930e5c1478a8220d5fad47bc, type: 2}
+  - {fileID: 1257372759060230, guid: 513fb7790dc32a844bf47dc5b87b6977, type: 2}
+  - {fileID: 1472963586035506, guid: 5cf3de5988a49044da97450e8b6f494c, type: 2}

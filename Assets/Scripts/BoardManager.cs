@@ -42,6 +42,7 @@ public class BoardManager : MonoBehaviour
         return room;
     }
 
+    // begin setting up and constructing the gameobjects for the the board
     public void SetupBoard(int level)
     {
         corridorFactory = GetComponent<CorridorFactory>();

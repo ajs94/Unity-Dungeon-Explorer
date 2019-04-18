@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class RoomFactory : MonoBehaviour
 {
+    // test/empty rooms
     public RoomManager defaultRoom;
     public TestTall test;
 
+    // actual gameplay rooms
     public DiningArea diningRoom;
     public RoomTables tableRoom;
     public RoomLibrary libraryRoom;
@@ -25,21 +27,22 @@ public class RoomFactory : MonoBehaviour
     // factory for the different room scripts
     public void ChooseRoomType(int index, Room[] rooms)
     {
-        int choice = Random.Range(0, 5);
+        int choice = Random.Range(0, 6);
 
-        if (choice >= 3)
-        {
-            libraryRoom.SetupScene(rooms[index]);
-        }
-        else if (choice == 2)
-        {
-            tableRoom.SetupScene(rooms[index]);
-        }
-        else if (choice == 1)
+        if (choice <= 1)
         {
             diningRoom.SetupScene(rooms[index]);
         }
-        else if (choice == 0)
+        else if (choice <= 3)
+        {
+            libraryRoom.SetupScene(rooms[index]);
+        }
+        else if (choice <= 5)
+        {
+            tableRoom.SetupScene(rooms[index]);
+        }
+        // the test room, not meant to be actually made
+        else
         {
             test.SetupScene(rooms[index]);
         }

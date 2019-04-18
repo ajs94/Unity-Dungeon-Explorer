@@ -56,12 +56,12 @@ public class RoomTables : RoomManager {
     public void SetupShelves(Vector3 pos)
     {
         GameObject shelf1 =
-            Instantiate(shelfList[Random.Range(0, chairList.Length)],
+            Instantiate(shelfList[Random.Range(0, shelfList.Length)],
             pos + room.vectorOffset,
             Quaternion.Euler(new Vector3(-90, 0, 0))) as GameObject;
         shelf1.transform.SetParent(roomHolder);
         GameObject shelf2 =
-            Instantiate(shelfList[Random.Range(0, chairList.Length)],
+            Instantiate(shelfList[Random.Range(0, shelfList.Length)],
             pos + new Vector3(-1, 0, -1) + room.vectorOffset,
             Quaternion.Euler(new Vector3(-90, 180, 0))) as GameObject;
         shelf2.transform.SetParent(roomHolder);
