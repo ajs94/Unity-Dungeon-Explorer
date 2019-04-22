@@ -1,6 +1,6 @@
-﻿/*using System.Collections;
+﻿using System.Collections;
 using VRTK;
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 // https://github.com/thestonefox/VRTK/issues/643
@@ -12,6 +12,7 @@ public class ScoreObjectVR : MonoBehaviour
     private bool isScored = false;
 
     public int objectWorth = 10;
+    public AudioSource mySound;
 
     // initialize the reference to the GameManager script
     void Start()
@@ -32,17 +33,20 @@ public class ScoreObjectVR : MonoBehaviour
         if (!isScored)
         {
             gameScript.AddToScore(objectWorth);
+            mySound.Play();
             isScored = true;
-            gameObject.SetActive(false);
 
-            // StartCoroutine("DelayedRemove", 5);
+            Destroy(gameObject, 3f);
+            //gameObject.SetActive(false);
+
+            //StartCoroutine("DelayedRemove", 5);
         }
     }
 
     private IEnumerable DelayedRemove(int sec)
     {
-        yield return new WaitForSeconds(sec);
         print("Past waiting");
+        yield return new WaitForSeconds(3);
+        gameObject.SetActive(false);
     }
 }
-*/

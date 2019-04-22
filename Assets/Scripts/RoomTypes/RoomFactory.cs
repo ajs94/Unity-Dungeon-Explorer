@@ -9,9 +9,11 @@ public class RoomFactory : MonoBehaviour
     public TestTall test;
 
     // actual gameplay rooms
+    public RoomExit exitPortal;
     public DiningArea diningRoom;
     public RoomTables tableRoom;
     public RoomLibrary libraryRoom;
+
 
     public void InitializeScripts()
     {
@@ -19,6 +21,7 @@ public class RoomFactory : MonoBehaviour
         defaultRoom = GetComponent<RoomManager>();
         test = GetComponent<TestTall>();
 
+        exitPortal = GetComponent<RoomExit>();
         diningRoom = GetComponent<DiningArea>();
         tableRoom = GetComponent<RoomTables>();
         libraryRoom = GetComponent<RoomLibrary>();
@@ -29,7 +32,11 @@ public class RoomFactory : MonoBehaviour
     {
         int choice = Random.Range(0, 6);
 
-        if (choice <= 1)
+        if (index == rooms.Length - 1)
+        {
+            exitPortal.SetupScene(rooms[index]);
+        }
+        else if (choice <= 1)
         {
             diningRoom.SetupScene(rooms[index]);
         }

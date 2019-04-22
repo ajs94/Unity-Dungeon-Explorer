@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.XR;
 
 public enum Direction
 {
@@ -24,6 +25,12 @@ public class GameManager : MonoBehaviour {
         else if (instance != null)
             Destroy(gameObject);
         */
+
+        /*
+        XRSettings.eyeTextureResolutionScale = 1;
+        XRSettings.renderViewportScale = .5f;
+        */
+
         DontDestroyOnLoad(gameObject);
         boardScript = GetComponent<BoardManager>();
         InitGame();

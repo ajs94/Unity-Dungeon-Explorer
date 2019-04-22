@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114881514580872882}
   - component: {fileID: 114818832267903256}
   - component: {fileID: 114702559572359958}
+  - component: {fileID: 114422516333519892}
   - component: {fileID: 114343912123981256}
   - component: {fileID: 114979433538917272}
   - component: {fileID: 114856807576815230}
@@ -139,6 +140,46 @@ MonoBehaviour:
   - {fileID: 1968201609593212, guid: 48adea117f55fee428ebf022c63bb415, type: 2}
   - {fileID: 1959864465095640, guid: 20ed4ac9618faf44587d611f80619cbd, type: 2}
   - {fileID: 1799888595767762, guid: 71374d324eb736d44b33db283651bf64, type: 2}
+  - {fileID: 1532560588723406, guid: 4e0d3fe0507891f4e9dc502b76c6f557, type: 2}
+  - {fileID: 1664540032471504, guid: bb584a9066b066444855dc24ea3501ea, type: 2}
+  - {fileID: 1040131647745758, guid: 332f82b18acd49147a3db442c87c4a59, type: 2}
+  - {fileID: 1916676725601222, guid: d60cba05146ef2044a071653027155ca, type: 2}
+  - {fileID: 1520900626170164, guid: 8d276d339e1f275489fdd4858f415b2a, type: 2}
+  - {fileID: 1779811992724718, guid: 2d425fa4598fb5a449255d639ed0e681, type: 2}
+  - {fileID: 1335724709512522, guid: fec9f1d391803d34fba5445118c3802d, type: 2}
+--- !u!114 &114422516333519892
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1706824095055102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc4685257ac05b24282b82dbdb1d18d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallHeight: 1
+  ceilingHeight: 2
+  torch: {fileID: 1610051588534984, guid: 8be0f9a3a3954b84eb57667289e28155, type: 2}
+  floorTiles:
+  - {fileID: 1135639592031946, guid: 59d7394e4d6f2ab469db89040557f401, type: 2}
+  - {fileID: 1623373647895956, guid: bf1866819082f474daff8c8ad2e88b3d, type: 2}
+  - {fileID: 1605668176481392, guid: d80fcc2da4dfd98488f4c0b95d3d56dc, type: 2}
+  - {fileID: 1192474190075828, guid: 402513c7d70ddf544a06c2078ed80b33, type: 2}
+  - {fileID: 1143171500175134, guid: cdd9bed56dcd6724c9da5ba42db61af9, type: 2}
+  ceilingTiles:
+  - {fileID: 1719997770235896, guid: 8adffa0a3dd842247afa02f0794a7b6e, type: 2}
+  - {fileID: 1509219187826154, guid: 8e4bed0a474bc2941b1cafd1562dbed5, type: 2}
+  - {fileID: 1105374723364320, guid: 681f26c004fa978419c767862c36a61d, type: 2}
+  - {fileID: 1906060853406224, guid: 2ca32ad9616f81b4bbb606dc3bf0f267, type: 2}
+  wallTiles:
+  - {fileID: 1757630405724362, guid: 10bb50c4b77610b4db939d006dee5ee4, type: 2}
+  - {fileID: 1323639578798532, guid: c6dfa1c3194e28c4eae54b55528b6b86, type: 2}
+  - {fileID: 1766327259228134, guid: ba7ad270b9e9288458ad23aa329567e3, type: 2}
+  - {fileID: 1605678714232036, guid: 049761a654b33684f90c14ab06baf389, type: 2}
+  roomHolder: {fileID: 0}
+  gridPosition: []
+  exitDoor: {fileID: 1799055178364052, guid: cfc361e3edae8c345b68bd121916d507, type: 2}
 --- !u!114 &114583830863740802
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -242,6 +283,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultRoom: {fileID: 0}
   test: {fileID: 0}
+  exitPortal: {fileID: 0}
   diningRoom: {fileID: 0}
   tableRoom: {fileID: 0}
   libraryRoom: {fileID: 0}
@@ -354,6 +396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 491f31e2bcbb45f41a50d6b0a58905ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  key: {fileID: 1282573381774436, guid: 8be0e62df5c029b4296e9d4aa7b3ddad, type: 2}
   corridors: []
   moreCorridors: []
   mapSizeX: 150

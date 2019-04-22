@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class BoardManager : MonoBehaviour
 {
+    public GameObject key;
     public Room[] rooms;
     public List<Corridor> corridors = new List<Corridor>();
     public List<Corridor> moreCorridors = new List<Corridor>();
@@ -40,6 +41,28 @@ public class BoardManager : MonoBehaviour
         room.SetupRoom(maxRoomSize, maxRoomSize, randomPos);
 
         return room;
+    }
+
+    public void PlaceKey()
+    {
+        // pick a random room
+        Room theRoom = rooms[Random.Range(0, rooms.Length)];
+        bool keyMade = false;
+
+        while (!keyMade)
+        {
+            // pick a random position in that room
+            Vector3 pos = new Vector3(Random.Range(0, theRoom.col), 1, Random.Range(0, theRoom.rows)) + theRoom.vectorOffset;
+            Collider[] intersecting = Physics.OverlapSphere(pos, .4f);
+
+            if (intersecting.Length == 0)
+            {
+                // make the key else try again
+                GameObject keyObj = Instantiate(key, pos,
+                       Quaternion.Euler(new Vector3(-90, 0, 0))) as GameObject;
+                keyMade = true;
+            }
+        }
     }
 
     // begin setting up and constructing the gameobjects for the the board
@@ -117,6 +140,9 @@ public class BoardManager : MonoBehaviour
             // print(rooms[i].vectorOffset);
             roomFactory.ChooseRoomType(i, rooms);
         }
+
+        // add the key to a random spot
+        PlaceKey();
 
         for (int i = 0; i < corridors.Count; i++)
         {
