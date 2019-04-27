@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using VRTK;
-using System.Collections;
 using UnityEngine;
 
 // https://github.com/thestonefox/VRTK/issues/643

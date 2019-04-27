@@ -8,9 +8,12 @@ public class Portal : MonoBehaviour {
 
     public string destination;
     public SpriteRenderer rend;
+    public AudioSource loopSound;
+    public AudioSource activateSound;
+    public AudioSource enterSound;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
         rend = GetComponent<SpriteRenderer>();
 	}
@@ -19,12 +22,20 @@ public class Portal : MonoBehaviour {
     {
         if (col.gameObject.CompareTag("key"))
         {
+            col.gameObject.SetActive(false);
             rend.enabled = true;
+            activateSound.Play();
+            loopSound.Play();
         }
         else if (col.gameObject.CompareTag("Player") && rend.enabled == true)
         {
-            print("please fucking god");
+            enterSound.Play();
             SceneManager.LoadScene(destination);
+        }
+        else if (!col.gameObject.CompareTag("Player") && rend.enabled == true)
+        {
+            enterSound.Play();
+            col.gameObject.SetActive(false);
         }
     }
 }

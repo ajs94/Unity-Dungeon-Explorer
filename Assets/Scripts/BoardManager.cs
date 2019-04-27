@@ -13,8 +13,8 @@ public class BoardManager : MonoBehaviour
 
     // the maximum size of rooms - 1; don't go lower than 11 for this
     private int maxRoomSize = 16;
-    public int mapSizeX = 150;
-    public int mapSizeY = 75;
+    private int mapSizeX = 75;
+    private int mapSizeY = 75;
 
     public RoomFactory roomFactory;
     public CorridorFactory corridorFactory;
