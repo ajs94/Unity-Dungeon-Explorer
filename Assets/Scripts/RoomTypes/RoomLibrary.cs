@@ -46,8 +46,8 @@ public class RoomLibrary : RoomManager {
 
         base.RoomSetup();
         PlaceBookshelves();
-        PlaceRoomWalls();
         PlaceTorches();
+        PlaceRoomWalls();
         InitialiseList();
     }
 }

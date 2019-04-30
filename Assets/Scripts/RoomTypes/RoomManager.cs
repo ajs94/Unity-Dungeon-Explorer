@@ -8,6 +8,7 @@ public class RoomManager : MonoBehaviour
 {
     public float wallHeight = 1;
     public float ceilingHeight = 2;
+    public bool lightMade = false;
 
     public GameObject torch;
     public GameObject[] floorTiles;
@@ -150,9 +151,67 @@ public class RoomManager : MonoBehaviour
     // maybe move this to the corridor class?
     public void PlaceTorches()
     {
-        GameObject instance =
-                    Instantiate(torch, new Vector3(-.3f, 1, room.rows/2) + room.vectorOffset, Quaternion.identity) as GameObject;
-        instance.transform.SetParent(roomHolder);
+        // int choice = Random.Range(0, 2);
+
+        if (!lightMade)
+        {
+
+            int choice = Random.Range(0, 4);
+
+            // bottom
+            if (choice == 0)
+            {
+                Vector3 pos = room.vectorOffset + new Vector3(Random.Range(0, room.col), 1, 0);
+                Collider[] intersecting = Physics.OverlapSphere(pos, .5f);
+                if (intersecting.Length == 0)
+                {
+                    GameObject instance =
+                        Instantiate(torch, pos,
+                        Quaternion.identity) as GameObject;
+                    instance.transform.SetParent(roomHolder);
+                }
+            }
+            // top
+            else if (choice == 1)
+            {
+                Vector3 pos = room.vectorOffset + new Vector3(Random.Range(0, room.col), 1, room.rows - 1);
+                Collider[] intersecting = Physics.OverlapSphere(pos, .5f);
+                if (intersecting.Length == 0)
+                {
+                    GameObject instance =
+                        Instantiate(torch, pos,
+                        Quaternion.identity) as GameObject;
+                    instance.transform.SetParent(roomHolder);
+                }
+            }
+            // left
+            else if (choice == 2)
+            {
+                Vector3 pos = room.vectorOffset + new Vector3(0, 1, Random.Range(0, room.rows));
+                Collider[] intersecting = Physics.OverlapSphere(pos, .5f);
+                if (intersecting.Length == 0)
+                {
+                    GameObject instance =
+                        Instantiate(torch, pos,
+                        Quaternion.identity) as GameObject;
+                    instance.transform.SetParent(roomHolder);
+                }
+            }
+            // right
+            else if (choice == 3)
+            {
+                Vector3 pos = room.vectorOffset + new Vector3(room.col - 1, 1, Random.Range(0, room.rows));
+                Collider[] intersecting = Physics.OverlapSphere(pos, .5f);
+                if (intersecting.Length == 0)
+                {
+                    GameObject instance =
+                        Instantiate(torch, pos,
+                        Quaternion.identity) as GameObject;
+                    instance.transform.SetParent(roomHolder);
+                }
+            }
+            // lightMade = true;
+        }
     }
 
     public virtual void SetupScene(Room newRoom)
@@ -162,8 +221,9 @@ public class RoomManager : MonoBehaviour
         roomHolder = new GameObject("Board").transform;
 
         RoomSetup();
-        PlaceRoomWalls();
         PlaceTorches();
+        PlaceTorches();
+        PlaceRoomWalls();
         InitialiseList();
     }
 }

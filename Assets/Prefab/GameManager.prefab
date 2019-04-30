@@ -129,10 +129,13 @@ MonoBehaviour:
   chairList:
   - {fileID: 1203111467471282, guid: e52744c26018498438672806be86e468, type: 2}
   shelfList:
+  - {fileID: 1076262122736302, guid: 6ff0b362511dcdb448b7e1c1fa10cbba, type: 2}
+  - {fileID: 1065406696552038, guid: c1a3d888930e5c1478a8220d5fad47bc, type: 2}
+  - {fileID: 1615374446833042, guid: 4ac2dcdb9acd36f4c9ee133cfe27d76b, type: 2}
+  - {fileID: 1332163071429662, guid: 2f91806bef50ae84e949b1fce6d85067, type: 2}
+  - {fileID: 1873442627121058, guid: ff96f78ce0bd3934690466549f8b3b6c, type: 2}
+  - {fileID: 1751879421181020, guid: ca0329ba80e884b4ab20f7e3e041ffd4, type: 2}
   - {fileID: 1946983407187640, guid: 78892e9ebd08d154eac593aeea32470d, type: 2}
-  - {fileID: 1257372759060230, guid: 513fb7790dc32a844bf47dc5b87b6977, type: 2}
-  - {fileID: 1472963586035506, guid: 5cf3de5988a49044da97450e8b6f494c, type: 2}
-  - {fileID: 1917741650833062, guid: c1a3d888930e5c1478a8220d5fad47bc, type: 2}
   paintings:
   - {fileID: 1591355355013306, guid: def1bae1f45db1545a71ee4b39013674, type: 2}
   - {fileID: 1955563390568692, guid: 9d05a74243ba70f47a2a0e071974245c, type: 2}
@@ -399,8 +402,6 @@ MonoBehaviour:
   key: {fileID: 1282573381774436, guid: 8be0e62df5c029b4296e9d4aa7b3ddad, type: 2}
   corridors: []
   moreCorridors: []
-  mapSizeX: 150
-  mapSizeY: 75
   roomFactory: {fileID: 0}
   corridorFactory: {fileID: 0}
 --- !u!114 &114971864735641268
@@ -476,8 +477,10 @@ MonoBehaviour:
   chairList:
   - {fileID: 1203111467471282, guid: e52744c26018498438672806be86e468, type: 2}
   shelfList:
+  - {fileID: 1076262122736302, guid: 6ff0b362511dcdb448b7e1c1fa10cbba, type: 2}
+  - {fileID: 1065406696552038, guid: c1a3d888930e5c1478a8220d5fad47bc, type: 2}
+  - {fileID: 1615374446833042, guid: 4ac2dcdb9acd36f4c9ee133cfe27d76b, type: 2}
+  - {fileID: 1332163071429662, guid: 2f91806bef50ae84e949b1fce6d85067, type: 2}
+  - {fileID: 1873442627121058, guid: ff96f78ce0bd3934690466549f8b3b6c, type: 2}
+  - {fileID: 1751879421181020, guid: ca0329ba80e884b4ab20f7e3e041ffd4, type: 2}
   - {fileID: 1946983407187640, guid: 78892e9ebd08d154eac593aeea32470d, type: 2}
-  - {fileID: 1274678096999684, guid: 6ff0b362511dcdb448b7e1c1fa10cbba, type: 2}
-  - {fileID: 1917741650833062, guid: c1a3d888930e5c1478a8220d5fad47bc, type: 2}
-  - {fileID: 1257372759060230, guid: 513fb7790dc32a844bf47dc5b87b6977, type: 2}
-  - {fileID: 1472963586035506, guid: 5cf3de5988a49044da97450e8b6f494c, type: 2}

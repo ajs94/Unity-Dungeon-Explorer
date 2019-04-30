@@ -72,19 +72,27 @@ public class DiningArea : RoomManager
             Collider[] intersecting = Physics.OverlapSphere(room.vectorOffset + new Vector3(-1, 2, i - .5f), 1);
             int choice = Random.Range(0, 5);
 
-            // 1/5 chance for paintings
+            // 1/5 chance for 2 paintings and then 1/2 for each to be made
             if (intersecting.Length == 0 && choice == 1)
             {
-                GameObject painting1 =
-                    Instantiate(paintings[Random.Range(0, paintings.Length)],
-                    room.vectorOffset + new Vector3(-.2f, 1.3f, i),
-                    Quaternion.Euler(new Vector3(-90, 180, 0))) as GameObject;
-                painting1.transform.SetParent(roomHolder);
-                GameObject painting2 =
-                    Instantiate(paintings[Random.Range(0, paintings.Length)],
-                    room.vectorOffset + new Vector3(-.2f, 1.3f, i - 1),
-                    Quaternion.Euler(new Vector3(-90, 180, 0))) as GameObject;
-                painting2.transform.SetParent(roomHolder);
+                int choice1 = Random.Range(0, 2);
+                if (choice1 == 0)
+                {
+                    GameObject painting1 =
+                        Instantiate(paintings[Random.Range(0, paintings.Length)],
+                        room.vectorOffset + new Vector3(-.2f, 1.3f, i),
+                        Quaternion.Euler(new Vector3(-90, 180, 0))) as GameObject;
+                    painting1.transform.SetParent(roomHolder);
+                }
+                int choice2 = Random.Range(0, 2);
+                if (choice2 == 0)
+                {
+                    GameObject painting2 =
+                        Instantiate(paintings[Random.Range(0, paintings.Length)],
+                        room.vectorOffset + new Vector3(-.2f, 1.3f, i - 1),
+                        Quaternion.Euler(new Vector3(-90, 180, 0))) as GameObject;
+                    painting2.transform.SetParent(roomHolder);
+                }
             }
             // shelf
             else if (intersecting.Length == 0 && choice != 0)
@@ -140,8 +148,8 @@ public class DiningArea : RoomManager
         base.RoomSetup();
         PlaceTables();
         AddSideObjects();
-        PlaceRoomWalls();
         PlaceTorches();
+        PlaceRoomWalls();
         InitialiseList();
     }
 }
