@@ -157,16 +157,16 @@ public class RoomManager : MonoBehaviour
         {
 
             int choice = Random.Range(0, 4);
-
+            choice = 5;
             // bottom
             if (choice == 0)
             {
                 Vector3 pos = room.vectorOffset + new Vector3(Random.Range(0, room.col), 1, 0);
-                Collider[] intersecting = Physics.OverlapSphere(pos, .5f);
+                Collider[] intersecting = Physics.OverlapSphere(pos, .6f);
                 if (intersecting.Length == 0)
                 {
                     GameObject instance =
-                        Instantiate(torch, pos,
+                        Instantiate(torch, pos + new Vector3(0, 0, -.4f),
                         Quaternion.identity) as GameObject;
                     instance.transform.SetParent(roomHolder);
                 }
@@ -174,12 +174,12 @@ public class RoomManager : MonoBehaviour
             // top
             else if (choice == 1)
             {
-                Vector3 pos = room.vectorOffset + new Vector3(Random.Range(0, room.col), 1, room.rows - 1);
-                Collider[] intersecting = Physics.OverlapSphere(pos, .5f);
+                Vector3 pos = room.vectorOffset + new Vector3(Random.Range(0, room.col), 1, room.rows-1);
+                Collider[] intersecting = Physics.OverlapSphere(pos, .6f);
                 if (intersecting.Length == 0)
                 {
                     GameObject instance =
-                        Instantiate(torch, pos,
+                        Instantiate(torch, pos + new Vector3(0, 0, .4f),
                         Quaternion.identity) as GameObject;
                     instance.transform.SetParent(roomHolder);
                 }
@@ -188,11 +188,11 @@ public class RoomManager : MonoBehaviour
             else if (choice == 2)
             {
                 Vector3 pos = room.vectorOffset + new Vector3(0, 1, Random.Range(0, room.rows));
-                Collider[] intersecting = Physics.OverlapSphere(pos, .5f);
+                Collider[] intersecting = Physics.OverlapSphere(pos, .6f);
                 if (intersecting.Length == 0)
                 {
                     GameObject instance =
-                        Instantiate(torch, pos,
+                        Instantiate(torch, pos + new Vector3(-.4f, 0, 0),
                         Quaternion.identity) as GameObject;
                     instance.transform.SetParent(roomHolder);
                 }
@@ -201,11 +201,11 @@ public class RoomManager : MonoBehaviour
             else if (choice == 3)
             {
                 Vector3 pos = room.vectorOffset + new Vector3(room.col - 1, 1, Random.Range(0, room.rows));
-                Collider[] intersecting = Physics.OverlapSphere(pos, .5f);
+                Collider[] intersecting = Physics.OverlapSphere(pos, .6f);
                 if (intersecting.Length == 0)
                 {
                     GameObject instance =
-                        Instantiate(torch, pos,
+                        Instantiate(torch, pos + new Vector3(.4f, 0, 0),
                         Quaternion.identity) as GameObject;
                     instance.transform.SetParent(roomHolder);
                 }

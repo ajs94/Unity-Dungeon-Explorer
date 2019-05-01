@@ -15,6 +15,6 @@ public class VRBillboard : MonoBehaviour
             }
             tCam = Camera.main.transform;
         }
-        transform.LookAt(tCam.position, Vector3.up);
+        transform.LookAt(new Vector3(tCam.position.x, transform.position.y, tCam.position.z), Vector3.up);
     }
 }
