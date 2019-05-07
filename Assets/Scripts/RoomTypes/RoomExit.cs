@@ -12,6 +12,7 @@ public class RoomExit : RoomManager {
             Instantiate(exitDoor,
             new Vector3((room.col / 2), 1, (room.rows / 2)) + room.vectorOffset,
             Quaternion.Euler(new Vector3(0, 0, 0))) as GameObject;
+        portal.transform.SetParent(room.roomHolder);
     }
 
     public override void SetupScene(Room newRoom)
@@ -21,7 +22,7 @@ public class RoomExit : RoomManager {
 
         room = newRoom;
 
-        roomHolder = new GameObject("Board").transform;
+        room.roomHolder = new GameObject("Room").transform;
 
         base.RoomSetup();
         MakeExit();

@@ -6,6 +6,8 @@ using UnityEngine;
 public class BoardManager : MonoBehaviour
 {
     public GameObject key;
+    public Transform board;
+
     public Room[] rooms;
     public List<Corridor> corridors = new List<Corridor>();
     public List<Corridor> moreCorridors = new List<Corridor>();

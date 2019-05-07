@@ -28,29 +28,29 @@ public class RoomTables : RoomManager {
             Instantiate(tableList[Random.Range(0, tableList.Length)], 
             pos + new Vector3(0, .5f, 0) + room.vectorOffset,
             Quaternion.Euler(new Vector3(-90, 270, 0))) as GameObject;
-        table.transform.SetParent(roomHolder);
+        table.transform.SetParent(room.roomHolder);
 
         // surround it on 4 sides with chairs
         GameObject chair1 =
             Instantiate(chairList[Random.Range(0, chairList.Length)], 
             pos + new Vector3(0, 0, 1) + room.vectorOffset, 
             Quaternion.Euler(new Vector3(-90, 0, 0))) as GameObject;
-        chair1.transform.SetParent(roomHolder);
+        chair1.transform.SetParent(room.roomHolder);
         GameObject chair2 =
             Instantiate(chairList[Random.Range(0, chairList.Length)],
             pos + new Vector3(0, 0, -1) + room.vectorOffset,
             Quaternion.Euler(new Vector3(-90, 180, 0))) as GameObject;
-        chair2.transform.SetParent(roomHolder);
+        chair2.transform.SetParent(room.roomHolder);
         GameObject chair3 =
             Instantiate(chairList[Random.Range(0, chairList.Length)],
             pos + new Vector3(1, 0, 0) + room.vectorOffset,
             Quaternion.Euler(new Vector3(-90, 90, 0))) as GameObject;
-        chair3.transform.SetParent(roomHolder);
+        chair3.transform.SetParent(room.roomHolder);
         GameObject chair4 =
             Instantiate(chairList[Random.Range(0, chairList.Length)],
             pos + new Vector3(-1, 0, 0) + room.vectorOffset,
             Quaternion.Euler(new Vector3(-90, 270, 0))) as GameObject;
-        chair4.transform.SetParent(roomHolder);
+        chair4.transform.SetParent(room.roomHolder);
     }
 
     public void SetupShelves(Vector3 pos)
@@ -59,12 +59,12 @@ public class RoomTables : RoomManager {
             Instantiate(shelfList[Random.Range(0, shelfList.Length)],
             pos + room.vectorOffset,
             Quaternion.Euler(new Vector3(-90, 0, 0))) as GameObject;
-        shelf1.transform.SetParent(roomHolder);
+        shelf1.transform.SetParent(room.roomHolder);
         GameObject shelf2 =
             Instantiate(shelfList[Random.Range(0, shelfList.Length)],
             pos + new Vector3(-1, 0, -1) + room.vectorOffset,
             Quaternion.Euler(new Vector3(-90, 180, 0))) as GameObject;
-        shelf2.transform.SetParent(roomHolder);
+        shelf2.transform.SetParent(room.roomHolder);
 
     }
 
@@ -75,7 +75,7 @@ public class RoomTables : RoomManager {
 
         room = newRoom;
 
-        roomHolder = new GameObject("Board").transform;
+        room.roomHolder = new GameObject("Room").transform;
 
         base.RoomSetup();
         PlaceTables();

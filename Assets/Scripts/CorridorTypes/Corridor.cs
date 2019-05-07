@@ -6,7 +6,6 @@ public class Corridor : MonoBehaviour
 {
     public List<Vector3> corridorPosition = new List<Vector3>();
     public Transform corridorHolder;
-    public Transform corridorWallHolder;
 
     public CorridorType corridorType;
 

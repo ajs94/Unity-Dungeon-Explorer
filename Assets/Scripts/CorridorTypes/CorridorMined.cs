@@ -75,5 +75,6 @@ public class CorridorMined : CorridorManager {
         ceilingHeight = 4;
 
         currentCorridor = corridor;
+        currentCorridor.corridorHolder = new GameObject("Corridor").transform;
     }
 }

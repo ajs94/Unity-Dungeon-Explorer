@@ -8,6 +8,9 @@ public class Room
 {
     public bool startRoomFlag = false;
     public Vector3 vectorOffset = new Vector3();
+    public Transform roomHolder;
+    public bool lightMade = false;
+
     public int rows;
     public int col;
 

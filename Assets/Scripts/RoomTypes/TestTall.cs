@@ -11,7 +11,7 @@ public class TestTall : RoomManager
 
         room = newRoom;
 
-        roomHolder = new GameObject("Board").transform;
+        room.roomHolder = new GameObject("Board").transform;
 
         base.RoomSetup();
         PlaceRoomWalls();

@@ -14,12 +14,12 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0, g: 0, b: 0, a: 1}
   m_FogMode: 1
   m_FogDensity: 0.02
-  m_LinearFogStart: 0
-  m_LinearFogEnd: 100
+  m_LinearFogStart: 25
+  m_LinearFogEnd: 75
   m_AmbientSkyColor: {r: 1, g: 1, b: 1, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
@@ -403,6 +403,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114620219803542684, guid: 53f2f8eb9fb7b1440be44b5259ecdb6c,
+        type: 2}
+      propertyPath: HUD
+      value: 
+      objectReference: {fileID: 1434221483}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 53f2f8eb9fb7b1440be44b5259ecdb6c, type: 2}
   m_IsPrefabParent: 0
@@ -468,6 +473,10 @@ Prefab:
     - target: {fileID: 1053958556457918, guid: ab270caa1be0224479a2b1fc233b8c05, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1053958556457918, guid: ab270caa1be0224479a2b1fc233b8c05, type: 2}
+      propertyPath: m_TagString
+      value: hud
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab270caa1be0224479a2b1fc233b8c05, type: 2}
@@ -611,6 +620,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e6974445bd083d544b4c0449737bce74, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1434221483 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1053958556457918, guid: ab270caa1be0224479a2b1fc233b8c05,
+    type: 2}
+  m_PrefabInternal: {fileID: 1101442922}
 --- !u!114 &1456398488 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114237214760722052, guid: ab270caa1be0224479a2b1fc233b8c05,

@@ -22,6 +22,7 @@ public class CorridorPaintings : CorridorManager
                     int index = Random.Range(0, paintings.Count);
                     GameObject instance = Instantiate(paintings[index], i + new Vector3(0, 1.3f, .2f),
                             Quaternion.Euler(new Vector3(-90, 270, 0))) as GameObject;
+                    instance.transform.SetParent(currentCorridor.corridorHolder);
                     paintings.Remove(paintings[index]);
                 }
             }
@@ -45,6 +46,7 @@ public class CorridorPaintings : CorridorManager
                     int index = Random.Range(0, paintings.Count);
                     GameObject instance = Instantiate(paintings[index], i + new Vector3(-.2f, 1.3f, 0),
                             Quaternion.Euler(new Vector3(-90, 180, 0))) as GameObject;
+                    instance.transform.SetParent(currentCorridor.corridorHolder);
                     paintings.Remove(paintings[index]);
                 }
             }
@@ -58,5 +60,6 @@ public class CorridorPaintings : CorridorManager
         ceilingHeight = 4;
 
         currentCorridor = corridor;
+        currentCorridor.corridorHolder = new GameObject("Corridor").transform;
     }
 }

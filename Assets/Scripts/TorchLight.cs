@@ -82,7 +82,7 @@ public class TorchLight : MonoBehaviour
             light.enabled = true;
             StartCoroutine("FadeIn");
         }
-        if (Distance > availableDistance)
+        if (Distance >= availableDistance)
         {
             light.enabled = false;
             maxIntensity = 0;

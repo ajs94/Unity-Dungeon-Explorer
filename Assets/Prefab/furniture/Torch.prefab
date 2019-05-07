@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 23974236191713336}
   m_Layer: 0
   m_Name: Torch
-  m_TagString: Untagged
+  m_TagString: light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

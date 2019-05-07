@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour {
 
     public Text scoreText;
 
+    public GameObject HUD;
     public BoardManager boardScript;
 
     // Use this for initialization
@@ -39,6 +40,7 @@ public class GameManager : MonoBehaviour {
     void InitGame()
     {
         boardScript.SetupBoard(0);
+        HUD.SetActive(true);
     }
 
     public void AddToScore(int numToAdd)

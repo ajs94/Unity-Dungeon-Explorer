@@ -853,7 +853,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1730427961850604}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.55, z: -0}
+  m_LocalPosition: {x: 0, y: 0.5, z: -0}
   m_LocalScale: {x: 40, y: 6.666666, z: 40}
   m_Children: []
   m_Father: {fileID: 4911574072577318}
@@ -1152,7 +1152,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.05
-  far clip plane: 100
+  far clip plane: 250
   field of view: 60
   orthographic: 1
   orthographic size: 5
@@ -2229,7 +2229,7 @@ MonoBehaviour:
   actualHeadset: {fileID: 1420925050709918}
   actualLeftController: {fileID: 1411441339992050}
   actualRightController: {fileID: 1633556974725606}
-  modelAliasLeftController: {fileID: 1755293537638610}
+  modelAliasLeftController: {fileID: 1925521601636968}
   modelAliasRightController: {fileID: 1618771100721816}
   cachedSystemSDKInfo:
     baseTypeName: VRTK.SDK_BaseSystem
