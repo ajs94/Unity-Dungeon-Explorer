@@ -4,8 +4,6 @@
 [Bb]uild/
 [Bb]uilds/
 Assets/AssetStoreTools*
-Assets/SteamVR*
-Assets/VRTK*
 
 # Visual Studio cache directory
 .vs/
